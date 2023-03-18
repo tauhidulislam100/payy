@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --black: #13121F;
+    --primary: #7C3AED;
+    --secondary: #54565B;
+}
+
+body,
+html {
+    font-family: 'Jost', sans-serif;
+    color: var(--black);
+}
+
+.header {
+    background: url(/header-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.discover {
+    background: linear-gradient(180deg, rgba(249, 249, 251, 0) 0%, #F9F9FB 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.discover::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    right: 0;
+    top: 0;
+    background: url(/discover-pattern.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.flow {
+    background: linear-gradient(180deg, rgba(249, 249, 251, 0) 0%, #F9F9FB 100%);
+}
+
+.testimonial {
+    background: linear-gradient(180deg, rgba(249, 249, 251, 0) 0%, #F9F9FB 100%);
+}
+
+
+.slick-list {
+    padding: 10px 0 !important;
+}
+
+.slick-current .testimonial-item {
+    margin: 0 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 11px 17px rgba(18, 4, 56, 0.05);
+}
+
+.tracking {
+    position: relative;
+}
+
+.tracking::before {
+    content: "";
+    left: 0;
+    top: 0;
+    width: 33%;
+    height: 352px;
+    background: url(/src/assets/tracking__1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+footer {
+    background: url(/src/assets/footer_bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+@media screen and (max-width: 1023px) {
+    .tracking::before {
+        display: none;
+    }
+}
