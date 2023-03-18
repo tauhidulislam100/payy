@@ -47,6 +47,7 @@ const Home = () => {
   return (
     <>
       <Header />
+      {/* start discover section  */}
       <section className="discover lg:pt-24 py-10">
         <div className="container">
           <div className="text-center mb-5">
@@ -84,6 +85,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* start flow section  */}
       <section className="flow py-20">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-4">
@@ -119,6 +121,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* start never miss payment section  */}
       <section className="flow  py-20">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-4">
@@ -153,10 +156,12 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* start testimonial section  */}
       <section className="testimonial">
         <Testimonial items={slideItems} />
       </section>
       <Tracking />
+      {/* start footer section  */}
       <footer className="py-20">
         <div className="container">
           <div className="grid gap-10 md:grid-cols-3">
