@@ -1,10 +1,9 @@
-import React from "react";
 import logo from "/src/assets/logo.png";
 import Facebook from "@components/Icons/Facebook";
 import Twitter from "@components/Icons/Twitter";
 import Instagram from "@components/Icons/Instagram";
 import LinkedIn from "@components/Icons/LinkedIn";
-import ArrowRight from "@components/Icons/ArrowRight";
+
 const Footer = () => {
   return (
     <footer id="footer" className="py-10">
