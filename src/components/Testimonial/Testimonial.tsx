@@ -6,9 +6,10 @@ const settings = {
   className: "center",
   centerMode: true,
   infinite: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
   slidesToShow: 3,
   centerPadding: "0",
-  speed: 500,
   responsive: [
     {
       breakpoint: 767,
@@ -79,10 +80,12 @@ const Testimonial = ({ items }: { items: SlideItem[] }) => {
     <div className="py-20 overflow-hidden">
       <div className="container">
         <div className="text-center mb-5">
-          <h2 className="font-bold md:text-4xl text-3xl">
+          <h2 data-animate className="font-bold md:text-4xl text-3xl">
             what Our Customer Say
           </h2>
-          <p className="text-4xl font-normal mt-2">About Us</p>
+          <p data-animate className="text-4xl font-normal mt-2">
+            About Us
+          </p>
         </div>
         <Slider
           ref={sliderRef}

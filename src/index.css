@@ -91,3 +91,15 @@ footer {
         display: none;
     }
 }
+
+@media screen and (max-height: 768px) {
+    .header {
+        padding-bottom: 5rem;
+    }
+}
+
+@media screen and (min-height: 1024px) {
+    .header {
+        min-height: 80vh;
+    }
+}

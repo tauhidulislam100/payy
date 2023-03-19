@@ -12,6 +12,7 @@ const Link = ({
   className?: string;
 }) => (
   <a
+    data-animate
     href={href}
     className={`block mt-4 lg:inline-block lg:mt-0 text-[17px] py-2 text-black font-medium hover:text-primary border-b-2 border-transparent hover:border-primary active:border-primary focus:border-primary ${className} mr-10`}
   >
@@ -22,9 +23,12 @@ const Link = ({
 function HeaderNavigationBar() {
   const [visible, setVisible] = useState(false);
   return (
-    <div className="container">
+    <div id="menu" className="container">
       <nav className="flex items-center justify-between flex-wrap p-6">
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
+        <div
+          data-animate
+          className="flex items-center flex-shrink-0 text-white mr-6"
+        >
           <img src={logo} alt="logo" className="max-w-[90px] object-contain" />
         </div>
         <div className="hidden lgMax:block">
@@ -50,12 +54,14 @@ function HeaderNavigationBar() {
           </div>
           <div>
             <a
+              data-animate
               href="/signin"
               className="inline-flex items-center text-base px-6 leading-none rounded-[4px] font-medium text-white bg-primary shadow-lg h-[38px]  mt-4 lg:mt-0"
             >
               Sign In
             </a>
             <a
+              data-animate
               href="/signup"
               className="inline-flex items-center text-base font-medium px-6 h-[38px] hover:bg-primary hover:shadow-lg rounded-[4px] hover:text-white leading-none text-black mt-4 lg:mt-0 ml-3"
             >

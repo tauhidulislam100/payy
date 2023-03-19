@@ -5,34 +5,43 @@ import appStore from "/src/assets/app_store.png";
 
 const Header = () => {
   return (
-    <header className="header transition-all mdMax:pb-20">
+    <header id="header" className="header transition-all mdMax:pb-20">
       <HeaderNavigationBar />
-      <div className="container lg:mt-40">
+      <div className="container 2xl:mt-40 lg:mt-20">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
           <div className="mdMax:order-2 mdMax:flex mdMax:justify-center">
             <div>
-              <h2 className="lg:text-[64px] text-6xl font-medium leading-[74px]">
+              <h2
+                data-animate
+                className="lg:text-[64px] text-6xl font-medium leading-[74px]"
+              >
                 <strong className="font-bold">Simple</strong> payment <br />{" "}
                 tracking <strong className="font-bold">for</strong> <br />{" "}
                 everyone
               </h2>
-              <p className="text-lg leading-7 text-black font-normal max-w-[430px] my-6">
+              <p
+                data-animate
+                className="text-lg leading-7 text-black font-normal max-w-[430px] my-6"
+              >
                 Payy simplifies how individuals, freelancers and small
                 businesses keep track of payments (credits and debits) so that
                 they never miss another payment.
               </p>
 
               <div className="flex gap-5 mt-10">
-                <a href="#">
+                <a data-animate href="#">
                   <img src={googlePlay} className="max-w-full" />
                 </a>
-                <a href="#">
+                <a data-animate href="#">
                   <img src={appStore} className="max-w-full" />
                 </a>
               </div>
             </div>
           </div>
-          <div className="mdMax:order-1 mdMax:flex items-center justify-center">
+          <div
+            data-animate
+            className="mdMax:order-1 mdMax:flex items-center justify-center"
+          >
             <img src={appUi} className="h-[435px] max-w-full object-contain" />
           </div>
         </div>
