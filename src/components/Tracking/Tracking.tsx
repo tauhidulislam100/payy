@@ -17,7 +17,10 @@ const Tracking = () => {
               className="max-w-full object-contain"
               alt="secure"
             />
-            <h2 data-animate className="text-4xl font-bold my-4 max-w-[646px]">
+            <h2
+              data-animate
+              className="xl:text-4xl md:text-3xl text-[25px] font-bold my-4 max-w-[646px]"
+            >
               Payment Tracking in a Simple{" "}
               <span className="font-medium">& Effecient Way</span>
             </h2>

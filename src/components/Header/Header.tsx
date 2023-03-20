@@ -12,7 +12,7 @@ const Header = () => {
             <div>
               <h2
                 data-animate
-                className="lg:text-8xl text-6xl font-medium leading-[74px]"
+                className="2xl:text-8xl xl:text-7xl xl:leading-[130%] md:text-5xl text-5xl leading-[123%] font-medium md:leading-[130%]"
               >
                 <strong className="font-bold">Simple</strong> payment <br />{" "}
                 tracking <strong className="font-bold">for</strong> <br />{" "}

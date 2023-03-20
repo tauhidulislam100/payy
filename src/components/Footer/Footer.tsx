@@ -6,7 +6,7 @@ import LinkedIn from "@components/Icons/LinkedIn";
 
 const Footer = () => {
   return (
-    <footer id="footer" className="py-10">
+    <footer id="footer" className="py-10 pt-20">
       <div className="container">
         <div className="grid gap-10 md:grid-cols-3">
           <div className="mdMax:text-center mdMax:flex mdMax:flex-col items-center justify-center">
