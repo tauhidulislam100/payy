@@ -2,22 +2,17 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 import Header from "@components/Header/Header";
-import ArrowRight from "@components/Icons/ArrowRight";
 import mobile_with_pattern from "/src/assets/mobile_with_pattern.png";
 import mobile_with_pattern_2 from "/src/assets/mobile_with_pattern_2.png";
 import mobile_with_pattern_3 from "/src/assets/mobile_with_pattern_3.png";
 import wallet from "/src/assets/wallet.png";
 import flow from "/src/assets/flow.png";
 import checked from "/src/assets/checked.png";
-import logo from "/src/assets/logo.png";
 import Testimonial from "@components/Testimonial/Testimonial";
 import Tracking from "@components/Tracking/Tracking";
-import Facebook from "@components/Icons/Facebook";
-import Twitter from "@components/Icons/Twitter";
-import Instagram from "@components/Icons/Instagram";
-import LinkedIn from "@components/Icons/LinkedIn";
 import { useEffect, useRef, useState } from "react";
 import Footer from "@components/Footer/Footer";
+import StoreLink from "@components/StoreLink/StoreLink";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -139,7 +134,7 @@ const Home = () => {
                   src={wallet}
                   className="max-w-full object-cover"
                 />
-                <h3 data-animate className="font-medium text-[30px]">
+                <h3 data-animate className="font-extrabold text-[30px]">
                   Track multiple kinds of payments
                 </h3>
               </div>
@@ -147,16 +142,9 @@ const Home = () => {
                 By eliminating the complexity of track one-time, Installment and
                 Recurring Payments all in one plus
               </p>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-sm font-bold text-secondary"
-                data-animate
-              >
-                Discover More
-                <span className="">
-                  <ArrowRight />
-                </span>
-              </a>
+              <div className="mt-10">
+                <StoreLink />
+              </div>
             </div>
           </div>
         </div>
@@ -173,7 +161,7 @@ const Home = () => {
                     src={flow}
                     className="max-w-full object-cover"
                   />
-                  <h3 data-animate className="font-medium text-[30px]">
+                  <h3 data-animate className="font-extrabold text-[30px]">
                     Keep your cash flow crystal clear
                   </h3>
                 </div>
@@ -181,16 +169,9 @@ const Home = () => {
                   By eliminating the complexity of track one-time, Installment
                   and Recurring Payments all in one plus
                 </p>
-                <a
-                  data-animate
-                  href="#"
-                  className="inline-flex items-center gap-2 text-sm font-bold text-primary"
-                >
-                  Discover More
-                  <span className="">
-                    <ArrowRight />
-                  </span>
-                </a>
+                <div className="mt-10">
+                  <StoreLink />
+                </div>
               </div>
             </div>
             <div data-animate>
@@ -219,7 +200,7 @@ const Home = () => {
                   src={checked}
                   className="max-w-full object-cover"
                 />
-                <h3 data-animate className="font-medium text-[30px]">
+                <h3 data-animate className="font-extrabold text-[30px]">
                   Never miss any payment
                 </h3>
               </div>
@@ -228,16 +209,9 @@ const Home = () => {
                 sending instant manual and automated notifications and payment
                 reminders
               </p>
-              <a
-                data-animate
-                href="#"
-                className="inline-flex items-center gap-2 text-sm font-bold text-secondary"
-              >
-                Discover More
-                <span className="">
-                  <ArrowRight />
-                </span>
-              </a>
+              <div className="mt-10">
+                <StoreLink />
+              </div>
             </div>
           </div>
         </div>

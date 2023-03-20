@@ -2,6 +2,7 @@ import secure from "/src/assets/secure.png";
 import tracking_2 from "/src/assets/tracking_2.png";
 import googlePlay from "/src/assets/google_play.png";
 import appStore from "/src/assets/app_store.png";
+import StoreLink from "@components/StoreLink/StoreLink";
 
 const Tracking = () => {
   return (
@@ -23,13 +24,8 @@ const Tracking = () => {
             <p data-animate className="text-secondary font-normal">
               Download and enjoy Payy for free with no obligations
             </p>
-            <div className="flex gap-5 mt-10">
-              <a data-animate href="#">
-                <img src={googlePlay} className="max-w-full" />
-              </a>
-              <a data-animate href="#">
-                <img src={appStore} className="max-w-full" />
-              </a>
+            <div className=" mt-10">
+              <StoreLink />
             </div>
           </div>
           <div data-animate className="flex justify-end lgMax:hidden">
