@@ -129,10 +129,10 @@ const Home = () => {
               <img
                 data-animate
                 src={mobile_with_pattern}
-                className="max-w-full object-contain lg:h-[489px]"
+                className="max-w-full object-cover h-[500px]"
               />
             </div>
-            <div className="lg:pt-28 mdMax:text-center">
+            <div className="md:pt-28 mdMax:text-center">
               <div className="flex gap-4 items-center max-w-[396px]">
                 <img
                   data-animate
@@ -165,7 +165,7 @@ const Home = () => {
       <section id="flow" className="flow py-10">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="lg:pt-40 mdMax:text-center">
+            <div className="md:pt-40 mdMax:text-center">
               <div className="max-w-[400px] ml-auto">
                 <div className="flex gap-4 items-center max-w-[396px]">
                   <img
@@ -196,7 +196,7 @@ const Home = () => {
             <div data-animate>
               <img
                 src={mobile_with_pattern_2}
-                className="max-w-full object-contain lg:h-[489px]"
+                className="max-w-full object-cover h-[500px]"
               />
             </div>
           </div>
@@ -209,10 +209,10 @@ const Home = () => {
             <div data-animate>
               <img
                 src={mobile_with_pattern_3}
-                className="max-w-full object-contain lg:h-[489px]"
+                className="max-w-full object-cover h-[500px]"
               />
             </div>
-            <div className="lg:pt-20 mdMax:text-center">
+            <div className="md:pt-32 mdMax:text-center">
               <div className="flex gap-4 items-center max-w-[396px]">
                 <img
                   data-animate

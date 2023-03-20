@@ -5,7 +5,7 @@ import appStore from "/src/assets/app_store.png";
 
 const Header = () => {
   return (
-    <header id="header" className="header transition-all mdMax:pb-20">
+    <header id="header" className="header transition-all mdMax:pb-20 pb-5">
       <HeaderNavigationBar />
       <div className="container 2xl:mt-40 lg:mt-20">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
@@ -42,7 +42,10 @@ const Header = () => {
             data-animate
             className="mdMax:order-1 mdMax:flex items-center justify-center"
           >
-            <img src={appUi} className="h-[435px] max-w-full object-contain" />
+            <img
+              src={appUi}
+              className="lg:object-cover xl:h-[500px] lg:h-[390px] h-[350px] max-w-full lg:pt-0 md:mt-10 md:pt-10"
+            />
           </div>
         </div>
       </div>
