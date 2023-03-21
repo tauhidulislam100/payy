@@ -12,7 +12,7 @@ const Header = () => {
             <div>
               <h2
                 data-animate
-                className="2xl:text-8xl xl:text-7xl xl:leading-[130%] md:text-5xl text-5xl leading-[123%] font-medium md:leading-[130%]"
+                className="2xl:text-8xl xl:text-7xl 2xl:leading-[130%] xl:leading-[130%] md:text-5xl text-5xl leading-[123%] font-medium md:leading-[130%]"
               >
                 <strong className="font-bold">Simple</strong> payment <br />{" "}
                 tracking <strong className="font-bold">for</strong> <br />{" "}
@@ -32,13 +32,10 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div
-            data-animate
-            className="mdMax:order-1 mdMax:flex items-center justify-center"
-          >
+          <div data-animate className="mdMax:order-1 mdMax:flex items-center">
             <img
               src={appUi}
-              className="lg:object-cover xl:h-[500px] lg:h-[390px] h-[350px] max-w-full lg:pt-0 md:mt-10 md:pt-10"
+              className="lg:object-contain xl:h-[500px] lg:h-[390px] h-[350px] max-w-full"
             />
           </div>
         </div>

@@ -110,7 +110,7 @@ const Home = () => {
       <Header />
       {/* start discover section  */}
       <section id="discover" className="discover lg:pt-24 py-10">
-        <div className="container">
+        <div className="max-w-[1140px] mx-auto px-4">
           <div className="text-center mb-5">
             <h2 className="font-bold text-4xl" data-animate>
               Discover why everyone
@@ -151,10 +151,10 @@ const Home = () => {
       </section>
       {/* start flow section  */}
       <section id="flow" className="flow py-10">
-        <div className="container">
+        <div className="max-w-[1140px] mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-4">
             <div className="md:pt-40 mdMax:text-center mdMax:order-2">
-              <div className="max-w-[400px] ml-auto">
+              <div className="">
                 <div className="flex gap-4 items-center max-w-[396px]">
                   <img
                     data-animate
@@ -185,7 +185,7 @@ const Home = () => {
       </section>
       {/* start never miss payment section  */}
       <section id="payment" className="flow  py-10">
-        <div className="container">
+        <div className="max-w-[1140px] mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-4">
             <div data-animate>
               <img
