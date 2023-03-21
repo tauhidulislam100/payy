@@ -103,3 +103,11 @@ footer {
         min-height: 80vh;
     }
 }
+
+@media screen and (min-height: 690px) and (max-width: 1024px) {
+    .header {
+        min-height: 60vh;
+    }
+
+
+}

@@ -1,3 +1,4 @@
+import CloseIcon from "@components/Icons/CloseIcon";
 import MenuIcon from "@components/Icons/MenuIcon";
 import { ReactNode, useState } from "react";
 import logo from "/src/assets/logo.png";
@@ -24,7 +25,7 @@ function HeaderNavigationBar() {
   const [visible, setVisible] = useState(false);
   return (
     <div id="menu" className="container">
-      <nav className="flex items-center justify-between flex-wrap p-6">
+      <nav className="flex items-center justify-between flex-wrap py-6">
         <div
           data-animate
           className="flex items-center flex-shrink-0 text-white mr-6"
@@ -34,18 +35,22 @@ function HeaderNavigationBar() {
         <div className="hidden lgMax:block">
           <button
             onClick={() => setVisible((p) => !p)}
-            className="flex items-center px-3 py-2 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-white"
+            className="flex items-center text-xl px-3 py-2 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-white"
           >
             <MenuIcon />
           </button>
         </div>
         <div
-          className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto transform transition-all delay-[25ms] overflow-hidden ${
-            visible
-              ? "lgMax:bg-red-400 lgMax:p-4 lgMax:mt-3 lgMax:bg-opacity-10 lgMax:h-auto lgMax:py-4"
-              : "lgMax:h-0 lgMax:py-0"
+          className={`relative w-full block flex-grow lg:flex lg:items-center lg:w-auto transform transition-all delay-[25ms] lgMax:fixed lgMax:w-[280px] lgMax:top-0 lgMax:bg-red-50 lgMax:h-full lgMax:right-0 z-10 lgMax:px-4 ${
+            visible ? "lgMax:right-0" : "lgMax:right-[-100%]"
           }`}
         >
+          <button
+            className="lgMax:flex hidden absolute font-medium text-xl right-5 top-2  text-black justify-center items-center rounded-full w-8 h-8 border-opacity-50"
+            onClick={() => setVisible(false)}
+          >
+            <CloseIcon />
+          </button>
           <div className="text-sm lg:mx-auto">
             <Link href="/products">Products</Link>
             <Link href="/developers">Developers</Link>

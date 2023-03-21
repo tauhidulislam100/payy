@@ -102,7 +102,7 @@ const Footer = () => {
             >
               Newsletter
             </h3>
-            <div className="my-5">
+            <div className="my-5 mdMax:text-center">
               <p
                 data-animate
                 className="text-base font-medium leading-[100%] mb-5"

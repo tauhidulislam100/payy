@@ -1,12 +1,10 @@
 import secure from "/src/assets/secure.png";
 import tracking_2 from "/src/assets/tracking_2.png";
-import googlePlay from "/src/assets/google_play.png";
-import appStore from "/src/assets/app_store.png";
 import StoreLink from "@components/StoreLink/StoreLink";
 
 const Tracking = () => {
   return (
-    <section id="tracking" className="tracking xl:pb-0 py-20">
+    <section id="tracking" className="tracking xl:pb-0 py-24 pt-32">
       <div className="container">
         <div className="grid grid-cols-3 lgMax:grid-cols-1">
           <div className=""></div>

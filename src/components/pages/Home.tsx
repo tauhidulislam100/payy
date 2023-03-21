@@ -92,13 +92,13 @@ const Home = () => {
 
     if (window.screen.width > 1023) {
       let ctx = gsap.context(() => {
-        animateScreen("#header", 0.4, 20);
-        animateScreen("#discover", 0.8, 30);
-        animateScreen("#flow", 0.8, 40);
-        animateScreen("#payment", 0.15, 50);
-        animateScreen("#testimonial", 0.15, 30);
-        animateScreen("#tracking", 0.17, 30);
-        animateScreen("#footer", 0.15, 40);
+        animateScreen("#header", 0.4, 10);
+        animateScreen("#discover", 0.8, 10);
+        animateScreen("#flow", 0.8, 10);
+        animateScreen("#payment", 0.15, 10);
+        animateScreen("#testimonial", 0.15, 10);
+        animateScreen("#tracking", 0.17, 10);
+        animateScreen("#footer", 0.15, 10);
       }, staticRef);
 
       return () => ctx.revert();
@@ -109,8 +109,8 @@ const Home = () => {
     <div ref={staticRef}>
       <Header />
       {/* start discover section  */}
-      <section id="discover" className="discover lg:pt-24 py-10">
-        <div className="max-w-[1140px] mx-auto px-4">
+      <section id="discover" className="discover py-24">
+        <div className="max-w-[1040px] mx-auto px-4">
           <div className="text-center mb-5">
             <h2 className="font-bold text-4xl" data-animate>
               Discover why everyone
@@ -119,7 +119,7 @@ const Home = () => {
               needs Payy!
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-4 lgMax:mt-10">
+          <div className="grid md:grid-cols-2 gap-4 md:mt-20">
             <div className="md:mt-0 mt-10">
               <img
                 data-animate
@@ -127,12 +127,12 @@ const Home = () => {
                 className="max-w-full lg:object-cover lg:h-[500px] mdMax:object-cover object-contain"
               />
             </div>
-            <div className="md:pt-28 mdMax:text-center">
-              <div className="flex gap-4 items-center max-w-[396px]">
+            <div className="md:pt-28 mdMax:text-center md:ml-auto">
+              <div className="flex gap-4 items-center max-w-[396px] mdMax:flex-col mdMax:justify-center">
                 <img
                   data-animate
                   src={wallet}
-                  className="max-w-full object-cover"
+                  className="max-w-full object-cover mdMax:my-5"
                 />
                 <h3 data-animate className="font-extrabold text-[30px]">
                   Track multiple kinds of payments
@@ -150,16 +150,17 @@ const Home = () => {
         </div>
       </section>
       {/* start flow section  */}
-      <section id="flow" className="flow py-10">
-        <div className="max-w-[1140px] mx-auto px-4">
+      <section id="flow" className="flow py-24">
+        <div className="max-w-[1040px] mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="md:pt-40 mdMax:text-center mdMax:order-2">
+            {/* md:ml-auto */}
+            <div className="md:pt-32 mdMax:text-center mdMax:order-2">
               <div className="">
-                <div className="flex gap-4 items-center max-w-[396px]">
+                <div className="flex gap-4 items-center max-w-[396px] mdMax:flex-col mdMax:justify-center mdMax:text-center">
                   <img
                     data-animate
                     src={flow}
-                    className="max-w-full object-cover"
+                    className="max-w-full object-cover mdMax:my-4"
                   />
                   <h3 data-animate className="font-extrabold text-[30px]">
                     Keep your cash flow crystal clear
@@ -174,7 +175,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div data-animate className="mdMax:order-1">
+            <div data-animate className="mdMax:order-1 md:ml-auto">
               <img
                 src={mobile_with_pattern_2}
                 className="lg:object-cover lg:h-[500px] object-contain"
@@ -184,17 +185,17 @@ const Home = () => {
         </div>
       </section>
       {/* start never miss payment section  */}
-      <section id="payment" className="flow  py-10">
-        <div className="max-w-[1140px] mx-auto px-4">
+      <section id="payment" className="flow  py-24">
+        <div className="max-w-[1040px] mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-4">
             <div data-animate>
               <img
                 src={mobile_with_pattern_3}
-                className="mlg:object-cover lg:h-[500px] object-contain"
+                className="lg:object-cover lg:h-[500px]"
               />
             </div>
-            <div className="md:pt-32 mdMax:text-center">
-              <div className="flex gap-4 items-center max-w-[396px]">
+            <div className="md:pt-24 mdMax:text-center md:ml-auto mdMax:mt-5">
+              <div className="flex mdMax:flex-col mdMax:justify-center gap-4 items-center max-w-[396px]">
                 <img
                   data-animate
                   src={checked}

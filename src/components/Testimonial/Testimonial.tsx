@@ -17,6 +17,12 @@ const settings = {
         slidesToShow: 1,
       },
     },
+    {
+      breakpoint: 840,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
   ],
 };
 
@@ -77,7 +83,7 @@ const Testimonial = ({ items }: { items: SlideItem[] }) => {
     }
   }
   return (
-    <div className="py-20 overflow-hidden">
+    <div className="py-24 overflow-hidden">
       <div className="container">
         <div className="text-center mb-5">
           <h2 data-animate className="font-bold md:text-4xl text-3xl">
