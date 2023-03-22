@@ -139,8 +139,8 @@ const Home = () => {
                 </h3>
               </div>
               <p data-animate className="md:max-w-[381px] text-secondary my-5">
-                By eliminating the complexity of track one-time, Installment and
-                Recurring Payments all in one plus
+              Payy eliminates the complexity of tracking one-time, installment and recurring payments across multiple clients while allowing you to receive/make payments in the most convenient way possible.
+
               </p>
               <div className="mt-10">
                 <StoreLink />
@@ -167,8 +167,9 @@ const Home = () => {
                   </h3>
                 </div>
                 <p data-animate className="max-w-[381px] text-secondary my-5">
-                  By eliminating the complexity of track one-time, Installment
-                  and Recurring Payments all in one plus
+                Quickly identify outstanding payments and track unpaid debts or credits without the need of a spreadsheet or other complex book keeping tools
+
+
                 </p>
                 <div className="mt-10">
                   <StoreLink />
@@ -206,9 +207,7 @@ const Home = () => {
                 </h3>
               </div>
               <p data-animate className="max-w-[381px] text-secondary my-5">
-                Stay up to date with your credits and debts by receiving and
-                sending instant manual and automated notifications and payment
-                reminders
+              Stay up to date with your credits and debts by receiving and sending instant manual and automated notifications and payment reminders
               </p>
               <div className="mt-10">
                 <StoreLink />
@@ -218,9 +217,9 @@ const Home = () => {
         </div>
       </section>
       {/* start testimonial section  */}
-      <section id="testimonial" className="testimonial">
+      {/* <section id="testimonial" className="testimonial">
         <Testimonial items={slideItems} />
-      </section>
+      </section> */}
       <Tracking />
       {/* start footer section  */}
       <Footer />

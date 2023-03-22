@@ -52,10 +52,11 @@ function HeaderNavigationBar() {
             <CloseIcon />
           </button>
           <div className="text-sm lg:mx-auto">
-            <Link href="/products">Products</Link>
-            <Link href="/developers">Developers</Link>
-            <Link href="/resources">Resources</Link>
-            <Link href="/pricing">Pricing</Link>
+            <Link href="#">Product</Link>
+            {/* <Link href="/developers">Developers</Link> */}
+            <Link href="https://payy.tawk.help"  target="_blank" rel="noopener noreferrer">Resources</Link>
+            {/* <Link href="/pricing">Pricing</Link> */}
+             <Link href="#">Download</Link>
           </div>
           <div>
             <a
