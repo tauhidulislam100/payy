@@ -54,7 +54,7 @@ function HeaderNavigationBar() {
           <div className="text-sm lg:mx-auto">
             <Link href="#">Product</Link>
             {/* <Link href="/developers">Developers</Link> */}
-            <Link href="https://payy.tawk.help"  target="_blank" rel="noopener noreferrer">Resources</Link>
+            <Link href="https://payy.tawk.help">Resources</Link>
             {/* <Link href="/pricing">Pricing</Link> */}
              <Link href="#">Download</Link>
           </div>
