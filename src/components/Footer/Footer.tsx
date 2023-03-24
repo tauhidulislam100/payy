@@ -16,21 +16,20 @@ const Footer = () => {
               className="max-w-full w-[90px] object-cover"
             />
             <h4 data-animate className="font-semibold mt-8 mb-4 text-xl">
-              Simple payment tracker for everyone
+              Simple payment tracking for everyone
             </h4>
             <p
               data-animate
               className="text-xl font-normal text-secondary leading-[155%] max-w-[343px]"
             >
-              Establish a framework. Taking seamless key performance indicators
-              offline to maximise the long tail.
+             Payy simplifies how individuals, freelancers and small businesses keep track of cashflow and debts so that they never miss another payment.
             </p>
             <div data-animate className="flex gap-4 mt-5">
-              <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-primary hover:text-white  inline-grid place-items-center bg-white text-secondary">
+              {/* <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-primary hover:text-white  inline-grid place-items-center bg-white text-secondary">
                 <span>
                   <Facebook />
                 </span>
-              </a>
+              </a> */}
               <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-primary hover:text-white  inline-grid place-items-center bg-white text-secondary">
                 <span>
                   <Twitter />
@@ -41,11 +40,11 @@ const Footer = () => {
                   <Instagram />
                 </span>
               </a>
-              <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-primary hover:text-white  inline-grid place-items-center bg-white text-secondary">
+              {/* <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-primary hover:text-white  inline-grid place-items-center bg-white text-secondary">
                 <span>
                   <LinkedIn />
                 </span>
-              </a>
+              </a> */}
             </div>
           </div>
           <div className="flex flex-col items-center">
@@ -53,14 +52,14 @@ const Footer = () => {
               Quick Link
             </h3>
             <ul className="mdMax:text-center">
-              <li data-animate>
+              {/* <li data-animate>
                 <a
                   href="#"
                   className={`inline-flex items-center text-base py-2 text-black font-medium hover:text-primary group`}
                 >
                   Home
                 </a>
-              </li>
+              </li> */}
               <li data-animate>
                 <a
                   href="#"
@@ -79,7 +78,7 @@ const Footer = () => {
               </li>
               <li data-animate>
                 <a
-                  href="#"
+                  href="https://payy.tawk.help/"
                   className={`inline-flex items-center text-base py-2 text-black font-medium hover:text-primary group`}
                 >
                   Resources
@@ -87,7 +86,7 @@ const Footer = () => {
               </li>
               <li data-animate>
                 <a
-                  href="#"
+                  href="https://payy.tawk.help/"
                   className={`inline-flex items-center text-base py-2 text-black font-medium hover:text-primary group`}
                 >
                   Support
@@ -95,7 +94,32 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="xl:pl-20">
+          <div  className="xl:pl-20">
+            <h3 data-animate className="font-bold text-2xl mb-6">
+              Legal
+            </h3>
+            <ul className="mdMax:text-center">
+              <li data-animate>
+                <a
+                  href="https://payy.tawk.help/article/terms-of-service"
+                  className={`inline-flex items-center text-base py-2 text-black font-medium hover:text-primary group`}
+                >
+                  Terms of Service
+                </a>
+              </li>
+              <li data-animate>
+                <a
+                  href="https://payy.tawk.help/article/privacy-policy"
+                  target={'_blank'}
+                  className={`inline-flex items-center text-base py-2 text-black font-medium hover:text-primary group`}
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          {/* <div className="xl:pl-20">
             <h3
               data-animate
               className="font-bold text-2xl mb-6 mdMax:text-center"
@@ -123,23 +147,23 @@ const Footer = () => {
                 Subscribe
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
         <hr className="md:mt-32 bg-primary mb-8" />
         <div className="flex justify-between mdMax:flex-col mdMax:items-center">
           <p data-animate className="text-base font-medium">
             © {new Date().getFullYear()}{" "}
             <a href="#" className="text-primary">
-              Payy
+              Fero Technologies, LLC
             </a>
-            , Design by BmAshik
+            , All rights reserved
           </p>
-          <div data-animate className="text-base font-medium">
+          {/* <div data-animate className="text-base font-medium">
             <a href="#">Terms of service</a> /{" "}
             <a href="#" className="text-primary">
               Privacy Policy
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

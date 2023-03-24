@@ -23,7 +23,7 @@ const Header = () => {
                 className="text-lg leading-7 text-black font-normal max-w-[430px] my-6"
               >
                 Payy simplifies how individuals, freelancers and small
-                businesses keep track of payments (credits and debits) so that
+                businesses keep track of cashflow and debts so that
                 they never miss another payment.
               </p>
 

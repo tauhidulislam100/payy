@@ -59,10 +59,11 @@ function HeaderNavigationBar() {
             <CloseIcon />
           </button>
           <div className="text-sm lg:mx-auto">
-            <Link href="#discover">Products</Link>
             <Link href="/developers">Developers</Link>
             <Link href="#download">Download</Link>
             <Link href="/pricing">Pricing</Link>
+            <Link href="#discover">Product</Link>
+            <Link href="https://payy.tawk.help">Resources</Link>
           </div>
           <div>
             <NavLink
