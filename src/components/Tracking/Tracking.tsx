@@ -4,7 +4,7 @@ import StoreLink from "@components/StoreLink/StoreLink";
 
 const Tracking = () => {
   return (
-    <section id="tracking" className="tracking xl:pb-0 py-24 pt-32">
+    <section id="download" className="tracking xl:pb-0 py-24 pt-32">
       <div className="container">
         <div className="grid grid-cols-3 lgMax:grid-cols-1">
           <div className=""></div>

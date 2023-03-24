@@ -97,12 +97,44 @@ const Home = () => {
         animateScreen("#flow", 0.8, 10);
         animateScreen("#payment", 0.15, 10);
         animateScreen("#testimonial", 0.15, 10);
-        animateScreen("#tracking", 0.17, 10);
+        animateScreen("#download", 0.17, 10);
         animateScreen("#footer", 0.15, 10);
       }, staticRef);
 
       return () => ctx.revert();
     }
+  }, [isMounted]);
+
+  useEffect(() => {
+    const discoverLink = document.querySelector('a[href="/#discover"]');
+    const downloadLink = document.querySelector('a[href="/#download"]');
+    discoverLink?.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("clicked ");
+      const discoverSection = document.querySelector(
+        "#discover"
+      ) as HTMLDivElement;
+
+      gsap.to(window, {
+        scrollTo: { y: discoverSection, offsetY: 80 },
+        duration: 1,
+        ease: "power2.out",
+      });
+    });
+
+    downloadLink?.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("clicked ");
+      const discoverSection = document.querySelector(
+        "#download"
+      ) as HTMLDivElement;
+
+      gsap.to(window, {
+        scrollTo: { y: discoverSection, offsetY: 80 },
+        duration: 1,
+        ease: "power2.out",
+      });
+    });
   }, [isMounted]);
 
   return isMounted ? (

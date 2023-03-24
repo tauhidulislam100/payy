@@ -1,6 +1,7 @@
 import CloseIcon from "@components/Icons/CloseIcon";
 import MenuIcon from "@components/Icons/MenuIcon";
 import { ReactNode, useState } from "react";
+import { NavLink } from "react-router-dom";
 import logo from "/src/assets/logo.png";
 
 const Link = ({
@@ -30,7 +31,13 @@ function HeaderNavigationBar() {
           data-animate
           className="flex items-center flex-shrink-0 text-white mr-6"
         >
-          <img src={logo} alt="logo" className="max-w-[90px] object-contain" />
+          <NavLink to="/">
+            <img
+              src={logo}
+              alt="logo"
+              className="max-w-[90px] object-contain"
+            />
+          </NavLink>
         </div>
         <div className="hidden lgMax:block">
           <button
@@ -52,19 +59,19 @@ function HeaderNavigationBar() {
             <CloseIcon />
           </button>
           <div className="text-sm lg:mx-auto">
-            <Link href="/products">Products</Link>
+            <Link href="#discover">Products</Link>
             <Link href="/developers">Developers</Link>
-            <Link href="/resources">Resources</Link>
+            <Link href="#download">Download</Link>
             <Link href="/pricing">Pricing</Link>
           </div>
           <div>
-            <a
+            <NavLink
               data-animate
-              href="/signin"
+              to="/auth/signin"
               className="inline-flex items-center text-base px-6 leading-none rounded-[4px] font-medium text-white bg-primary shadow-lg h-[38px]  mt-4 lg:mt-0"
             >
               Sign In
-            </a>
+            </NavLink>
             <a
               data-animate
               href="/signup"
