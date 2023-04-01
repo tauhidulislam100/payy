@@ -102,7 +102,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="w-full lg:p-10">
+    <div className="w-full lg:p-10 lg:pb-0">
       <div className="md:inline-block text-center">
         <h2 className="text-2xl font-semibold">Edit Profile</h2>
         <div className="relative mt-10 mb-5 inline-block">
@@ -135,7 +135,7 @@ const EditProfile = () => {
           {user?.firstName} {user?.lastName}
         </h3>
       </div>
-      <div className="bg-white rounded-[4px] py-10 lg:px-20 px-5 mt-10">
+      <div className="bg-white rounded-[4px] py-10 lg:px-12 px-5 mt-10">
         <div className="grid md:grid-cols-2 lg:gap-10 gap-4">
           <BorderedInput
             value={form.firstName}
@@ -171,7 +171,7 @@ const EditProfile = () => {
         </div>
         <button
           onClick={updateProfile}
-          className="bg-primary text-center w-full rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
+          className="hover:bg-opacity-90 bg-primary text-center w-full rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
         >
           {updatingProfile ? <Spin className="light-spin" /> : "Save"}
         </button>

@@ -11,7 +11,7 @@ const Activity = () => {
   const [open, setOpen] = useState(false);
   console.log("user home data ", userHomeData);
   return (
-    <div className="w-full lg:p-10 ">
+    <div className="w-full lg:p-10 lg:pb-0">
       <h3 className="text-secondary text-2xl font-semibold mb-5">
         Welcome, {user?.firstName} {user?.lastName}
       </h3>

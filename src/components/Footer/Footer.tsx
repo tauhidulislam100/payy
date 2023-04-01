@@ -15,12 +15,12 @@ const Footer = () => {
               src={logo}
               className="max-w-full w-[90px] object-cover"
             />
-            <h4 data-animate className="font-semibold mt-8 mb-4 text-xl">
+            <h4 data-animate className="font-semibold mt-8 mb-4 text-lg">
               Simple payment tracking for everyone
             </h4>
             <p
               data-animate
-              className="text-xl font-normal text-white leading-[155%] max-w-[343px]"
+              className="text-lg font-normal text-white leading-[155%] max-w-[343px]"
             >
               Payy simplifies how individuals, freelancers and small businesses
               keep track of cashflow and debts so that they never miss another
@@ -137,7 +137,7 @@ const Footer = () => {
               <input
                 data-animate
                 placeholder="Your email address..."
-                className="h-[60px] box-border border border-[#0D0000] rounded-[50px] px-4 bg-[#D9D9D9] bg-opacity-20 text-white placeholder:text-white text-base w-full font-medium focus:outline-none"
+                className="h-[60px] box-border border border-white rounded-[50px] px-4 bg-[#D9D9D9] bg-opacity-20 text-white placeholder:text-white text-base w-full font-medium focus:outline-none"
               />
             </div>
             <div className="mb-5">
@@ -150,8 +150,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        <div className="flex justify-between mdMax:flex-col mdMax:items-center mt-32">
+        <div className="w-full h-[1px] bg-white bg-opacity-20 my-10" />
+        <div className="flex justify-between mdMax:flex-col mdMax:items-center">
           <p data-animate className="text-base font-medium text-white">
             © {new Date().getFullYear()}{" "}
             <a href="#" className="text-black mr-1">

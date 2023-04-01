@@ -40,7 +40,7 @@ const CurrencySetting = () => {
   };
 
   return (
-    <div className="w-full md:p-10">
+    <div className="w-full md:p-10 md:pb-0">
       <h2 className="text-2xl font-semibold">Currency</h2>
       <div className="bg-white rounded-md py-10 md:px-12 mt-10 text-center">
         <p className="text-[17px] text-secondary mb-5">
@@ -57,7 +57,7 @@ const CurrencySetting = () => {
         <div className="flex justify-center">
           <button
             onClick={updateCurrency}
-            className="bg-primary text-center w-full max-w-[343px] rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
+            className="hover:bg-opacity-90 bg-primary text-center w-full max-w-[343px] rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
           >
             {loading ? <Spin className="light-spin" /> : "Save"}
           </button>

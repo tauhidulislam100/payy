@@ -33,7 +33,7 @@ const NotificationSetting = () => {
     setLoading(false);
   };
   return (
-    <div className="w-full md:p-10">
+    <div className="w-full md:p-10 md:pb-0">
       <h2 className="text-2xl font-semibold">Notifications</h2>
       <div className="bg-white rounded-md py-10 md:px-12 px-5 mt-10">
         <div className="flex justify-between mb-8">
@@ -62,7 +62,7 @@ const NotificationSetting = () => {
         </div>
         <button
           onClick={updateNotification}
-          className="bg-primary text-center w-full rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
+          className="hover:bg-opacity-90 bg-primary text-center w-full rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
         >
           {loading ? <Spin className="light-spin" /> : "Save"}
         </button>

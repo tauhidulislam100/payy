@@ -23,21 +23,6 @@ const Login = () => {
     visiblePassword: false,
   });
 
-  // const sendCode = async (e: React.MouseEvent) => {
-  //   e.preventDefault();
-  //   try {
-  //     setForm((p) => ({ ...p, codeLoading: true }));
-  //     await api("/auth/request-login-code", {
-  //       data: { phone: `${form.code}${form.phone}` },
-  //     });
-  //   } catch (error: any) {
-  //     notification.error({
-  //       message: error?.message ?? "unable to send code",
-  //     });
-  //   }
-  //   setForm((p) => ({ ...p, codeLoading: false }));
-  // };
-
   const sendCode = async (e: React.MouseEvent) => {
     e.preventDefault();
     if (retryTime > 0) return;
@@ -86,10 +71,10 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-[#EFEFEF] bg-opacity-[0.85]">
+    <div className="bg-[#EFEFEF] bg-opacity-[0.85] min-h-screen">
       <HeaderNavigationBar />
-      <div className="container flex items-center justify-center min-h-[90.5vh]">
-        <form className="login-form w-[640px] max-w-full xl:px-[70px] md:px-10 p-5 pt-[54px] pb-[28px]">
+      <div className="container flex items-center justify-center 2xl:min-h-[90.5vh] min-h-[87vh]">
+        <form className="login-form w-[640px] max-w-full 2xl:px-12 md:px-6 p-5 2xl:py-[54px]">
           <h4 className="font-bold text-2xl text-black">Welcome!</h4>
           <h2 className="text-[38px] font-bold text-back mb-5">
             Login to payy
@@ -156,12 +141,12 @@ const Login = () => {
                 {form.visiblePassword ? <AiFillEyeInvisible /> : <AiFillEye />}
               </button>
             </div>
-            <p className="text-base font-normal mt-2 text-secondary">
+            {/* <p className="text-base font-normal mt-2 text-secondary">
               Forgot Password?{" "}
               <a href="#" className="font-medium text-black">
                 Click Here
               </a>
-            </p>
+            </p> */}
           </div>
           <button
             title={!form.password ? "please enter password" : ""}
@@ -171,12 +156,12 @@ const Login = () => {
           >
             {form.loading ? <Spin className="light-spin" /> : "Login"}
           </button>
-          <p className="text-base font-normal mt-5 text-secondary text-center">
+          {/* <p className="text-base font-normal mt-5 text-secondary text-center">
             Don't have an account yet?{" "}
             <a href="#" className="font-medium text-black">
               Register for free
             </a>
-          </p>
+          </p> */}
         </form>
       </div>
     </div>

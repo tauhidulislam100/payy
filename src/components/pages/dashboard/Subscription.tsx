@@ -50,7 +50,7 @@ const Subscription = () => {
   };
 
   return (
-    <div className="w-full md:p-10">
+    <div className="w-full md:p-10 md:pb-0">
       <h2 className="text-2xl font-semibold">Choose your plan</h2>
       <div className="bg-white rounded-md py-10 md:px-12 px-4 mt-10">
         <div className="text-center">
@@ -91,7 +91,7 @@ const Subscription = () => {
                 {planData?.cost[k][planMode]}
               </h2>
               {currentSubscription === k ? (
-                <span className="absolute left-2 bottom-3 text-white  text-xl w-4 h-4 box-content">
+                <span className="absolute left-2 bottom-3 text-green-500  text-xl w-4 h-4 box-content">
                   <AiFillCheckSquare />
                 </span>
               ) : null}
@@ -100,7 +100,7 @@ const Subscription = () => {
         </div>
 
         <div className="mt-10">
-          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4 mb-4">
+          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
             <p className="text-secondary text-base">
               {planData?.contracts?.text}
             </p>
@@ -112,7 +112,7 @@ const Subscription = () => {
                 : ""}
             </p>
           </div>
-          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4 mb-4">
+          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
             <p className="text-secondary text-base">
               {planData?.members?.text}
             </p>
@@ -124,7 +124,7 @@ const Subscription = () => {
                 : ""}
             </p>
           </div>
-          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4 mb-4">
+          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
             <p className="text-secondary text-base">
               {planData?.manualReminder?.text}
             </p>
@@ -136,7 +136,7 @@ const Subscription = () => {
                 : ""}
             </p>
           </div>
-          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4 mb-4">
+          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
             <p className="text-secondary text-base">
               {planData?.paymentReminders?.text}
             </p>
@@ -148,7 +148,7 @@ const Subscription = () => {
                 : ""}
             </p>
           </div>
-          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4 mb-4">
+          <div className="flex items-center justify-between border-b border-[#F1F1F2]  py-4">
             <p className="text-secondary text-base">
               {planData?.customPaymentChannels?.text}
             </p>
@@ -163,7 +163,7 @@ const Subscription = () => {
         </div>
         <button
           onClick={upgradePlan}
-          className="bg-primary text-center w-full rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
+          className="hover:bg-opacity-90 bg-primary text-center w-full rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
         >
           {loading ? <Spin className="light-spin" /> : "Upgrade"}
         </button>
