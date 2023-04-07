@@ -6,6 +6,15 @@ import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai";
 
 const { Panel } = Collapse;
 
+function timeAgo(dateString: string) {
+  const date: any = new Date(dateString);
+  const today: any = new Date();
+  const diffTime = today - date;
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+  return rtf.format(-diffDays, "day");
+}
+
 const Activity = () => {
   const { userHomeData, user } = useAuth();
   const [open, setOpen] = useState(false);
@@ -20,14 +29,19 @@ const Activity = () => {
           <div className="gap-4 flex text-white">
             <div className="w-[120px]">
               <Select
-                options={[]}
+                options={userHomeData?.outgoingPayments?.map(
+                  (p: Record<string, any>) => ({
+                    label: p.name,
+                    value: p.amount,
+                  })
+                )}
                 placeholder="My Contract"
                 suffixIcon={<AiFillCaretDown />}
                 className="w-full contact-selection"
               />
             </div>
             <div className="bg-white bg-opacity-20 h-[32px] rounded w-[88px] px-4 text-sm font-normal inline-flex items-center">
-              $
+              {userHomeData?.totalIncomingAmount?.[0]?.currencySymbol}
             </div>
           </div>
           <h2 className="text-white font-semibold text-3xl mt-4">
@@ -54,7 +68,7 @@ const Activity = () => {
         <div className="border border-[##F1F1F2] rounded-[10px] p-6 my-10">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-black">
-              Outgoing Payments
+              Incomming Payments
             </h2>
             <button className="text-primary font-medium text-base">
               View All
@@ -75,22 +89,30 @@ const Activity = () => {
               </span>
             )}
           >
-            <Panel
-              key={"1"}
-              className="px-0"
-              header={
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h5 className="text-base text-secondary">Due 7 days ago</h5>
-                    <h2 className="text-base font-medium text-black mt-2">
-                      Rent Payment
-                    </h2>
-                  </div>
-                  <h4 className="text-base font-medium text-black">$ 200.00</h4>
-                </div>
-              }
-            ></Panel>
-            <Panel
+            {userHomeData?.incomingPayments?.map(
+              (payment: Record<string, any>, index: number) => (
+                <Panel
+                  key={index}
+                  className="px-0"
+                  header={
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <h5 className="text-base text-secondary">
+                          {timeAgo(payment.dueDate)}
+                        </h5>
+                        <h2 className="text-base font-medium text-black mt-2">
+                          {payment.name}
+                        </h2>
+                      </div>
+                      <h4 className="text-base font-medium text-black">
+                        {payment.currencySymbol} {payment.amount}
+                      </h4>
+                    </div>
+                  }
+                ></Panel>
+              )
+            )}
+            {/* <Panel
               key={"2"}
               className="px-0"
               header={
@@ -104,7 +126,7 @@ const Activity = () => {
                   <h4 className="text-base font-medium text-black">$ 200.00</h4>
                 </div>
               }
-            ></Panel>
+            ></Panel> */}
           </Collapse>
         </div>
         <div className="border border-[##F1F1F2] rounded-[10px] p-6">
@@ -129,55 +151,29 @@ const Activity = () => {
               </span>
             )}
           >
-            <Panel
-              key={"1"}
-              className="px-0"
-              header={
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h5 className="text-base text-secondary">Due 7 days ago</h5>
-                    <h2 className="text-base font-medium text-black mt-2">
-                      Rent Payment
-                    </h2>
-                  </div>
-                  <h4 className="text-base font-medium text-black">$ 200.00</h4>
-                </div>
-              }
-            ></Panel>
-            <Panel
-              key={"2"}
-              className="px-0"
-              header={
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h5 className="text-base text-secondary">
-                      Instalment Payment
-                    </h5>
-                    <h2 className="text-base font-medium text-black mt-2">
-                      Shalom’s Tutorials
-                    </h2>
-                  </div>
-                  <h4 className="text-base font-medium text-black">$ 200.00</h4>
-                </div>
-              }
-            ></Panel>
-            <Panel
-              key={"3"}
-              className="px-0"
-              header={
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h5 className="text-base text-secondary">
-                      One Time Payment
-                    </h5>
-                    <h2 className="text-base font-medium text-black mt-2">
-                      Chicken Republic
-                    </h2>
-                  </div>
-                  <h4 className="text-base font-medium text-black">$ 200.00</h4>
-                </div>
-              }
-            ></Panel>
+            {userHomeData?.outgoingPayments?.map(
+              (payment: Record<string, any>, index: number) => (
+                <Panel
+                  key={index}
+                  className="px-0"
+                  header={
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <h5 className="text-base text-secondary">
+                          {timeAgo(payment.dueDate)}
+                        </h5>
+                        <h2 className="text-base font-medium text-black mt-2">
+                          {payment.name}
+                        </h2>
+                      </div>
+                      <h4 className="text-base font-medium text-black">
+                        {payment.currencySymbol} {payment.amount}
+                      </h4>
+                    </div>
+                  }
+                ></Panel>
+              )
+            )}
           </Collapse>
         </div>
       </div>
