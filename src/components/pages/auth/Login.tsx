@@ -107,7 +107,7 @@ const Login = () => {
             className="disabled:cursor-not-allowed disabled:bg-gray-400 mb-4 rounded-[39px] bg-primary w-full h-[50px] inline-flex items-center justify-center mt-5 font-medium text-base text-white"
           >
             {retryTime > 0 ? (
-              `Retry in ${retryTime}s`
+              `Don't get code retry in ${retryTime}s`
             ) : form.codeLoading ? (
               <Spin size="small" className="light-spin" />
             ) : (
