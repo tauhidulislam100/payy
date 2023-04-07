@@ -39,6 +39,7 @@ interface AuthContextValue {
   user: User | null;
   loading: boolean;
   userHomeData: Record<string, any>;
+  homeDataLoading: boolean;
   authenticate: (token: string) => Promise<void>;
   logout?: (path?: string) => void;
   updateUser?: (user: User | null) => void;
@@ -48,6 +49,7 @@ export const AuthContext = createContext<AuthContextValue>({
   user: null,
   loading: true,
   userHomeData: [],
+  homeDataLoading: true,
   authenticate: async (token) => {},
 });
 
@@ -55,7 +57,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const { data, error, isLoading } = useUser();
-  const { data: homeData } = useUserHome();
+  const { data: homeData, isLoading: homeDataLoading } = useUserHome();
 
   useEffect(() => {
     if ((!data && !error && cookie.get("token")) || isLoading) {
@@ -88,6 +90,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         user,
         loading,
         userHomeData: homeData?.data,
+        homeDataLoading,
         updateUser,
         authenticate,
         logout,

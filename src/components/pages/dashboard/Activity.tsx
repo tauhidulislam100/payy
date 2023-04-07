@@ -1,6 +1,6 @@
 import StoreLink from "@components/StoreLink/StoreLink";
 import { useAuth } from "@src/hooks/useAuth";
-import { Collapse, Modal, Select } from "antd";
+import { Collapse, Modal, Select, Spin } from "antd";
 import { useState } from "react";
 import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai";
 
@@ -16,9 +16,8 @@ function timeAgo(dateString: string) {
 }
 
 const Activity = () => {
-  const { userHomeData, user } = useAuth();
+  const { userHomeData, homeDataLoading, user } = useAuth();
   const [open, setOpen] = useState(false);
-  console.log("user home data ", userHomeData);
   return (
     <div className="w-full lg:p-10 lg:pb-0">
       <h3 className="text-secondary text-2xl font-semibold mb-5">
@@ -89,6 +88,11 @@ const Activity = () => {
               </span>
             )}
           >
+            {homeDataLoading ? (
+              <div className="flex items-center justify-center">
+                <Spin />
+              </div>
+            ) : null}
             {userHomeData?.incomingPayments?.map(
               (payment: Record<string, any>, index: number) => (
                 <Panel
@@ -151,6 +155,11 @@ const Activity = () => {
               </span>
             )}
           >
+            {homeDataLoading ? (
+              <div className="flex items-center justify-center">
+                <Spin />
+              </div>
+            ) : null}
             {userHomeData?.outgoingPayments?.map(
               (payment: Record<string, any>, index: number) => (
                 <Panel
