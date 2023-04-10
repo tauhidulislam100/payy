@@ -17,7 +17,9 @@ function timeAgo(dateString: string) {
 
 const Activity = () => {
   const { userHomeData, homeDataLoading, user } = useAuth();
+  const [selectedOption, setSelectedOption] = useState("my-contract");
   const [open, setOpen] = useState(false);
+
   return (
     <div className="w-full lg:p-10 lg:pb-0">
       <h3 className="text-secondary text-2xl font-semibold mb-5">
@@ -26,27 +28,36 @@ const Activity = () => {
       <div className="bg-white sm:px-10 px-4 py-10 rounded-[4px]">
         <div className="h-[160px] rounded-md activity-header flex flex-col items-center justify-center text-center">
           <div className="gap-4 flex text-white">
-            <div className="w-[120px]">
+            <div className="w-[140px]">
               <Select
-                options={userHomeData?.outgoingPayments?.map(
-                  (p: Record<string, any>) => ({
-                    label: p.name,
-                    value: p.amount,
-                  })
-                )}
+                options={[
+                  { label: "My Contracts", value: "my-contract" },
+                  { label: "Outgoing Payments", value: "outgoing-payment" },
+                ]}
                 placeholder="My Contract"
                 suffixIcon={<AiFillCaretDown />}
                 className="w-full contact-selection"
+                value={selectedOption}
+                onChange={(v) => setSelectedOption(v)}
               />
             </div>
             <div className="bg-white bg-opacity-20 h-[32px] rounded w-[88px] px-4 text-sm font-normal inline-flex items-center">
-              {userHomeData?.totalIncomingAmount?.[0]?.currencySymbol}
+              {selectedOption === "my-contract"
+                ? userHomeData?.totalIncomingAmount?.[0]?.currencySymbol
+                : userHomeData?.totalOutgoingAmount?.[0]?.currencySymbol}
             </div>
           </div>
-          <h2 className="text-white font-semibold text-3xl mt-4">
-            {userHomeData?.totalOutgoingAmount?.[0]?.currencySymbol}{" "}
-            {userHomeData?.totalOutgoingAmount?.[0]?.amount}
-          </h2>
+          {selectedOption === "my-contract" ? (
+            <h2 className="text-white font-semibold text-3xl mt-4">
+              {userHomeData?.totalIncomingAmount?.[0]?.currencySymbol}{" "}
+              {userHomeData?.totalIncomingAmount?.[0]?.amount}
+            </h2>
+          ) : (
+            <h2 className="text-white font-semibold text-3xl mt-4">
+              {userHomeData?.totalOutgoingAmount?.[0]?.currencySymbol}{" "}
+              {userHomeData?.totalOutgoingAmount?.[0]?.amount}
+            </h2>
+          )}
         </div>
 
         {/* <div className="flex items-center justify-center gap-5 my-10">
@@ -63,60 +74,61 @@ const Activity = () => {
             Make Payment
           </button>
         </div> */}
+        {selectedOption === "my-contract" ? (
+          <div className="border border-[##F1F1F2] rounded-[10px] p-6 my-10">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-black">
+                Incomming Payments
+              </h2>
+              <button className="text-primary font-medium text-base">
+                View All
+              </button>
+            </div>
+            <Collapse
+              defaultActiveKey="1"
+              ghost
+              className="mt-4 info-collapse"
+              expandIconPosition="right"
+              expandIcon={(p) => (
+                <span {...p} className="text-[#A9A9BC]">
+                  {p.isActive ? (
+                    <AiFillCaretDown className="text-[#A9A9BC] text-lg" />
+                  ) : (
+                    <AiFillCaretRight className="text-[#A9A9BC] text-lg" />
+                  )}
+                </span>
+              )}
+            >
+              {homeDataLoading ? (
+                <div className="flex items-center justify-center">
+                  <Spin />
+                </div>
+              ) : null}
 
-        <div className="border border-[##F1F1F2] rounded-[10px] p-6 my-10">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-black">
-              Incomming Payments
-            </h2>
-            <button className="text-primary font-medium text-base">
-              View All
-            </button>
-          </div>
-          <Collapse
-            defaultActiveKey="1"
-            ghost
-            className="mt-4 info-collapse"
-            expandIconPosition="right"
-            expandIcon={(p) => (
-              <span {...p} className="text-[#A9A9BC]">
-                {p.isActive ? (
-                  <AiFillCaretDown className="text-[#A9A9BC] text-lg" />
-                ) : (
-                  <AiFillCaretRight className="text-[#A9A9BC] text-lg" />
-                )}
-              </span>
-            )}
-          >
-            {homeDataLoading ? (
-              <div className="flex items-center justify-center">
-                <Spin />
-              </div>
-            ) : null}
-            {userHomeData?.incomingPayments?.map(
-              (payment: Record<string, any>, index: number) => (
-                <Panel
-                  key={index}
-                  className="px-0"
-                  header={
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <h5 className="text-base text-secondary">
-                          {timeAgo(payment.dueDate)}
-                        </h5>
-                        <h2 className="text-base font-medium text-black mt-2">
-                          {payment.name}
-                        </h2>
+              {userHomeData?.incomingPayments?.map(
+                (payment: Record<string, any>, index: number) => (
+                  <Panel
+                    key={index}
+                    className="px-0"
+                    header={
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h5 className="text-base text-secondary">
+                            Due {timeAgo(payment.dueDate)}
+                          </h5>
+                          <h2 className="text-base font-medium text-black mt-2">
+                            {payment.name}
+                          </h2>
+                        </div>
+                        <h4 className="text-base font-medium text-black">
+                          {payment.currencySymbol} {payment.amount}
+                        </h4>
                       </div>
-                      <h4 className="text-base font-medium text-black">
-                        {payment.currencySymbol} {payment.amount}
-                      </h4>
-                    </div>
-                  }
-                ></Panel>
-              )
-            )}
-            {/* <Panel
+                    }
+                  ></Panel>
+                )
+              )}
+              {/* <Panel
               key={"2"}
               className="px-0"
               header={
@@ -131,60 +143,67 @@ const Activity = () => {
                 </div>
               }
             ></Panel> */}
-          </Collapse>
-        </div>
-        <div className="border border-[##F1F1F2] rounded-[10px] p-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-black">My Contracts</h2>
-            <button className="text-primary font-medium text-base">
-              View All
-            </button>
+            </Collapse>
           </div>
-          <Collapse
-            defaultActiveKey="1"
-            ghost
-            className="mt-4 info-collapse"
-            expandIconPosition="right"
-            expandIcon={(p) => (
-              <span {...p} className="text-[#A9A9BC]">
-                {p.isActive ? (
-                  <AiFillCaretDown className="text-[#A9A9BC] text-lg" />
-                ) : (
-                  <AiFillCaretRight className="text-[#A9A9BC] text-lg" />
-                )}
-              </span>
-            )}
-          >
-            {homeDataLoading ? (
-              <div className="flex items-center justify-center">
-                <Spin />
-              </div>
-            ) : null}
-            {userHomeData?.outgoingPayments?.map(
-              (payment: Record<string, any>, index: number) => (
-                <Panel
-                  key={index}
-                  className="px-0"
-                  header={
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <h5 className="text-base text-secondary">
-                          {timeAgo(payment.dueDate)}
-                        </h5>
-                        <h2 className="text-base font-medium text-black mt-2">
-                          {payment.name}
-                        </h2>
+        ) : (
+          <div className="border border-[##F1F1F2] rounded-[10px] p-6 my-10">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-black">
+                Outgoing Payments
+              </h2>
+              <button className="text-primary font-medium text-base">
+                View All
+              </button>
+            </div>
+            <Collapse
+              defaultActiveKey="1"
+              ghost
+              className="mt-4 info-collapse"
+              expandIconPosition="right"
+              expandIcon={(p) => (
+                <span {...p} className="text-[#A9A9BC]">
+                  {p.isActive ? (
+                    <AiFillCaretDown className="text-[#A9A9BC] text-lg" />
+                  ) : (
+                    <AiFillCaretRight className="text-[#A9A9BC] text-lg" />
+                  )}
+                </span>
+              )}
+            >
+              {homeDataLoading ? (
+                <div className="flex items-center justify-center">
+                  <Spin />
+                </div>
+              ) : null}
+              {userHomeData?.outgoingPayments?.map(
+                (payment: Record<string, any>, index: number) => (
+                  <Panel
+                    key={index}
+                    className="px-0"
+                    header={
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h5 className="text-base text-secondary">
+                            Due {timeAgo(payment.dueDate)}
+                          </h5>
+                          <h2 className="text-base font-medium text-black mt-2">
+                            {payment.name}
+                          </h2>
+                        </div>
+                        <h4 className="text-base font-medium text-black">
+                          {payment?.currencySymbol ??
+                            userHomeData?.totalOutgoingAmount?.[0]
+                              ?.currencySymbol}{" "}
+                          {payment.amount}
+                        </h4>
                       </div>
-                      <h4 className="text-base font-medium text-black">
-                        {payment.currencySymbol} {payment.amount}
-                      </h4>
-                    </div>
-                  }
-                ></Panel>
-              )
-            )}
-          </Collapse>
-        </div>
+                    }
+                  ></Panel>
+                )
+              )}
+            </Collapse>
+          </div>
+        )}
       </div>
       <Modal
         open={open}

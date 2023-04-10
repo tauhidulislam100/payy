@@ -9,7 +9,7 @@ import { AiFillCheckSquare } from "react-icons/ai";
 const Subscription = () => {
   const { user } = useAuth();
   const [planMode, setPlanMode] = useState("monthly");
-  const [planData, setPlanData] = useState<Record<string, any>>({});
+  const [planData, setPlanData] = useState<Record<string, any>>();
   const [currentSubscription, setCurrentSubscription] = useState(
     user?.subscription?.level ?? "Free"
   );
@@ -17,12 +17,12 @@ const Subscription = () => {
   const { data } = useSubscriptionPackage();
 
   useEffect(() => {
-    setPlanData(data?.data ?? {});
+    setPlanData(data?.data);
   }, [data]);
 
   const upgradePlan = async () => {
     const subscriptionId =
-      planData?.productIds[currentSubscription]?.web?.[planMode];
+      planData?.productIds[currentSubscription]?.web?.[planMode]?.["stripe"];
     if (!subscriptionId) {
       return notification.warning({
         message: "subscription plan does not exist",
@@ -30,15 +30,26 @@ const Subscription = () => {
     }
     try {
       setLoading(true);
-      await api("/subscriptions/web", {
+      const params = new URLSearchParams(window.location.search);
+      const params2 = new URLSearchParams(window.location.search);
+      params.set("checkout", "true");
+      params2.set("checkout", "false");
+      const successUrl = `${window.location.origin}${
+        window.location.pathname
+      }?${params.toString()}${window.location.hash}`;
+
+      const cancelUrl = `${window.location.origin}${
+        window.location.pathname
+      }?${params2.toString()}${window.location.hash}`;
+      const { data } = await api("/subscriptions/stripe/create-session", {
+        method: "POST",
         data: {
-          plan: subscriptionId,
+          priceId: subscriptionId,
+          successUrl: successUrl,
+          cancelUrl: cancelUrl,
         },
       });
-      notification.success({
-        message:
-          "subscription plan successfuly upgraded to " + currentSubscription,
-      });
+      window.location.assign(data.url);
     } catch (error: any) {
       notification.error({
         message:
@@ -88,7 +99,7 @@ const Subscription = () => {
               </p>
               <h2 className="mt-6 text-2xl font-semibold">
                 {user?.currency?.symbol ?? "$"}
-                {planData?.cost[k][planMode]}
+                {planData?.cost?.[k]?.[planMode]}
               </h2>
               {currentSubscription === k ? (
                 <span className="absolute left-2 bottom-3 text-green-500  text-xl w-4 h-4 box-content">
@@ -98,75 +109,82 @@ const Subscription = () => {
             </div>
           ))}
         </div>
-
-        <div className="mt-10">
-          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
-            <p className="text-secondary text-base">
-              {planData?.contracts?.text}
-            </p>
-            <p className="text-black font-medium">
-              {planData?.contracts?.[currentSubscription]
-                ? planData?.contracts?.[currentSubscription]
-                : currentSubscription === "Enterprise"
-                ? "Unlimited"
-                : ""}
-            </p>
+        {planData ? (
+          <>
+            <div className="mt-10">
+              <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
+                <p className="text-secondary text-base">
+                  {planData?.contracts?.text}
+                </p>
+                <p className="text-black font-medium">
+                  {planData?.contracts?.[currentSubscription]
+                    ? planData?.contracts?.[currentSubscription]
+                    : currentSubscription === "Enterprise"
+                    ? "Unlimited"
+                    : ""}
+                </p>
+              </div>
+              <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
+                <p className="text-secondary text-base">
+                  {planData?.members?.text}
+                </p>
+                <p className="text-black font-medium">
+                  {planData?.members?.[currentSubscription]
+                    ? planData?.members?.[currentSubscription]
+                    : currentSubscription === "Enterprise"
+                    ? "Unlimited"
+                    : ""}
+                </p>
+              </div>
+              <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
+                <p className="text-secondary text-base">
+                  {planData?.manualReminder?.text}
+                </p>
+                <p className="text-black font-medium">
+                  {planData?.manualReminder?.[currentSubscription]
+                    ? planData?.manualReminder?.[currentSubscription]
+                    : currentSubscription === "Enterprise"
+                    ? "Unlimited"
+                    : ""}
+                </p>
+              </div>
+              <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
+                <p className="text-secondary text-base">
+                  {planData?.paymentReminders?.text}
+                </p>
+                <p className="text-black font-medium">
+                  {planData?.paymentReminders?.[currentSubscription]
+                    ? planData?.paymentReminders?.[currentSubscription]
+                    : currentSubscription === "Enterprise"
+                    ? "Unlimited"
+                    : ""}
+                </p>
+              </div>
+              <div className="flex items-center justify-between border-b border-[#F1F1F2]  py-4">
+                <p className="text-secondary text-base">
+                  {planData?.customPaymentChannels?.text}
+                </p>
+                <p className="text-black font-medium">
+                  {planData?.customPaymentChannels?.[currentSubscription]
+                    ? planData?.customPaymentChannels?.[currentSubscription]
+                    : currentSubscription === "Enterprise"
+                    ? "Unlimited"
+                    : ""}
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={upgradePlan}
+              className="hover:bg-opacity-90 bg-primary text-center w-full rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
+            >
+              {loading ? <Spin className="light-spin" /> : "Upgrade"}
+            </button>
+          </>
+        ) : (
+          <div className="flex items-center justify-center">
+            <Spin size="large" />
           </div>
-          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
-            <p className="text-secondary text-base">
-              {planData?.members?.text}
-            </p>
-            <p className="text-black font-medium">
-              {planData?.members?.[currentSubscription]
-                ? planData?.members?.[currentSubscription]
-                : currentSubscription === "Enterprise"
-                ? "Unlimited"
-                : ""}
-            </p>
-          </div>
-          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
-            <p className="text-secondary text-base">
-              {planData?.manualReminder?.text}
-            </p>
-            <p className="text-black font-medium">
-              {planData?.manualReminder?.[currentSubscription]
-                ? planData?.manualReminder?.[currentSubscription]
-                : currentSubscription === "Enterprise"
-                ? "Unlimited"
-                : ""}
-            </p>
-          </div>
-          <div className="flex items-center justify-between border-b border-[#F1F1F2] last-of-type:border-0 py-4">
-            <p className="text-secondary text-base">
-              {planData?.paymentReminders?.text}
-            </p>
-            <p className="text-black font-medium">
-              {planData?.paymentReminders?.[currentSubscription]
-                ? planData?.paymentReminders?.[currentSubscription]
-                : currentSubscription === "Enterprise"
-                ? "Unlimited"
-                : ""}
-            </p>
-          </div>
-          <div className="flex items-center justify-between border-b border-[#F1F1F2]  py-4">
-            <p className="text-secondary text-base">
-              {planData?.customPaymentChannels?.text}
-            </p>
-            <p className="text-black font-medium">
-              {planData?.customPaymentChannels?.[currentSubscription]
-                ? planData?.customPaymentChannels?.[currentSubscription]
-                : currentSubscription === "Enterprise"
-                ? "Unlimited"
-                : ""}
-            </p>
-          </div>
-        </div>
-        <button
-          onClick={upgradePlan}
-          className="hover:bg-opacity-90 bg-primary text-center w-full rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
-        >
-          {loading ? <Spin className="light-spin" /> : "Upgrade"}
-        </button>
+        )}
       </div>
     </div>
   );

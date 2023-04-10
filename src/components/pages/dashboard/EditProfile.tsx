@@ -8,18 +8,26 @@ interface InputProps {
   label?: string;
   placeholder?: string;
   value?: string;
+  disabled?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-const BorderedInput = ({ label, placeholder, value, onChange }: InputProps) => {
+const BorderedInput = ({
+  label,
+  placeholder,
+  value,
+  disabled = false,
+  onChange,
+}: InputProps) => {
   return (
     <div className="w-full">
       {label ? (
         <label className="block text-base text-secondary mb-4">{label}</label>
       ) : null}
       <input
+        disabled={disabled}
         value={value}
         onChange={onChange}
-        className="block bg-black bg-opacity-[0.06] border  border-black border-opacity-50 focus:border-opacity-90 focus:outline-none  px-4 h-[50px] rounded-[50px] focus:text-black text-secondary w-full text-base"
+        className="block bg-black bg-opacity-[0.06] disabled:bg-opacity-25 border  border-black border-opacity-50 focus:border-opacity-90 focus:outline-none  px-4 h-[50px] rounded-[50px] focus:text-black text-secondary w-full text-base"
         placeholder={placeholder}
       />
     </div>
@@ -154,19 +162,20 @@ const EditProfile = () => {
             }
           />
         </div>
-        <div className="flex items-center mdMax:flex-col md:mt-10 mt-4">
+        <div className="grid md:grid-cols-2 lg:gap-10 gap-4 mt-5">
           <BorderedInput
             label="Email Address"
             placeholder="example@gmail.com"
             value={form.email}
             onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
           />
-          <p className="mx-4 text-secondary md:mt-10 mt-4">or</p>
+
           <BorderedInput
             label="Phone"
             placeholder="+1234 5678 895"
             onChange={(e) => setForm((p) => ({ ...p, phone: e.target.value }))}
             value={form.phone}
+            disabled={true}
           />
         </div>
         <button

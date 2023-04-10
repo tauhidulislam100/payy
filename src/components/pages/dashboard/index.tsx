@@ -1,7 +1,7 @@
 import Footer from "@components/Footer/Footer";
 import HeaderNavigationBar from "@components/Navigation/HeaderNavigationBar";
 import ArrowRight from "@src/components/Icons/ArrowRight";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AiFillCaretRight,
   AiOutlineDoubleLeft,
@@ -13,10 +13,23 @@ import EditProfile from "./EditProfile";
 import NotificationSetting from "./NotificationSetting";
 import Sidebar from "./Sidebar";
 import Subscription from "./Subscription";
+import { notification } from "antd";
 
 const Dashboard = () => {
   const [selectedMenu, setSelectedMenu] = useState<string>("activity");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  useEffect(() => {
+    if (window.location.href.includes("checkout=false")) {
+      notification.error({
+        message: "something went wrong subscription failed.",
+      });
+    }
+    if (window.location.href.includes("checkout=true")) {
+      notification.success({
+        message: "subscription successfully created.",
+      });
+    }
+  }, []);
   return (
     <>
       <div className="bg-white border-b-[5px] border-primary">

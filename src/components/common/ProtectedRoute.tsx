@@ -1,12 +1,17 @@
 import { useAuth } from "@src/hooks/useAuth";
-import { Navigate, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({
   children,
-  ...rest
 }: {
   children: React.ReactElement;
 }) {
   const { user } = useAuth();
-  return user ? children : <Navigate to="/auth/signin" />;
+  return user ? (
+    children
+  ) : (
+    <Navigate
+      to={{ pathname: "/auth/signin", search: window.location.search }}
+    />
+  );
 }
