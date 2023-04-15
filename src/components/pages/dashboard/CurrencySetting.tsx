@@ -1,14 +1,15 @@
 import { useAuth } from "@src/hooks/useAuth";
 import api from "@src/utils/api";
+import { currencyList } from "@src/utils/currency";
 import { notification, Select, Spin } from "antd";
 import { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 
-const opts = [
-  { value: "USD", label: "$" },
-  { value: "EUR", label: "€" },
-  { value: "NGN", label: "₦" },
-];
+// const opts = [
+//   { value: "USD", label: "$" },
+//   { value: "EUR", label: "€" },
+//   { value: "NGN", label: "₦" },
+// ];
 
 const CurrencySetting = () => {
   const { user } = useAuth();
@@ -19,7 +20,9 @@ const CurrencySetting = () => {
   const [loading, setLoading] = useState(false);
 
   const updateCurrency = async () => {
-    const currency = opts.find((item) => item.value === defaultCurrency);
+    const currency = currencyList.find(
+      (item) => item.value === defaultCurrency
+    );
     try {
       setLoading(true);
       await api("/users/me", {
@@ -47,13 +50,18 @@ const CurrencySetting = () => {
           Choose your default currency!
         </p>
         <Select
-          options={opts}
           value={defaultCurrency}
           onChange={setDefaultCurrency}
           className="w-[140px] currency-select"
           suffixIcon={<AiFillCaretDown />}
           placeholder="Select Default Currency"
-        />
+        >
+          {currencyList.map((cr) => (
+            <Select.Option key={cr.value}>
+              {cr.label} ({cr.abbreviation})
+            </Select.Option>
+          ))}
+        </Select>
         <div className="flex justify-center">
           <button
             onClick={updateCurrency}

@@ -19,7 +19,6 @@ const Activity = () => {
   const { userHomeData, homeDataLoading, user } = useAuth();
   const [selectedOption, setSelectedOption] = useState("my-contract");
   const [open, setOpen] = useState(false);
-
   return (
     <div className="w-full lg:p-10 lg:pb-0">
       <h3 className="text-secondary text-2xl font-semibold mb-5">
@@ -78,7 +77,7 @@ const Activity = () => {
           <div className="border border-[##F1F1F2] rounded-[10px] p-6 my-10">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold text-black">
-                Incomming Payments
+                Incoming Payments
               </h2>
               <button className="text-primary font-medium text-base">
                 View All
@@ -99,7 +98,7 @@ const Activity = () => {
                 </span>
               )}
             >
-              {homeDataLoading ? (
+              {homeDataLoading || userHomeData === undefined ? (
                 <div className="flex items-center justify-center">
                   <Spin />
                 </div>
@@ -170,7 +169,7 @@ const Activity = () => {
                 </span>
               )}
             >
-              {homeDataLoading ? (
+              {homeDataLoading || userHomeData === undefined ? (
                 <div className="flex items-center justify-center">
                   <Spin />
                 </div>

@@ -13,6 +13,9 @@ const Subscription = () => {
   const [currentSubscription, setCurrentSubscription] = useState(
     user?.subscription?.level ?? "Free"
   );
+  const [selectedSubscription, setSelectedSubscription] = useState(
+    user?.subscription?.level ?? "Free"
+  );
   const [loading, setLoading] = useState(false);
   const { data } = useSubscriptionPackage();
 
@@ -76,13 +79,13 @@ const Subscription = () => {
             Get 2 months off of the {planMode} plan
           </p>
         </div>
-        <div className="grid sm:grid-cols-3 gap-5 mt-20">
+        <div className="grid xl:grid-cols-4 sm:grid-cols-2 gap-5 mt-20">
           {Object.keys(planData?.productIds ?? {})?.map((k) => (
             <div
-              onClick={() => setCurrentSubscription(k)}
+              onClick={() => setSelectedSubscription(k)}
               key={k}
               className={`${
-                currentSubscription === k
+                selectedSubscription === k
                   ? "bg-primary text-white"
                   : "hover:bg-primary hover:text-white"
               } border-2 border-[#F1F1F2] rounded-md text-center relative  text-black  p-5 cursor-pointer group`}
@@ -90,7 +93,7 @@ const Subscription = () => {
               <h2 className="text-2xl font-semibold">{k}</h2>
               <p
                 className={`mt-2 text-base  ${
-                  currentSubscription === k
+                  selectedSubscription === k
                     ? " text-white"
                     : "group-hover:text-white text-secondary"
                 }  capitalize `}
@@ -102,7 +105,7 @@ const Subscription = () => {
                 {planData?.cost?.[k]?.[planMode]}
               </h2>
               {currentSubscription === k ? (
-                <span className="absolute left-2 bottom-3 text-green-500  text-xl w-4 h-4 box-content">
+                <span className="absolute left-2 bottom-3 text-white text-xl w-4 h-4 box-content">
                   <AiFillCheckSquare />
                 </span>
               ) : null}
@@ -117,9 +120,9 @@ const Subscription = () => {
                   {planData?.contracts?.text}
                 </p>
                 <p className="text-black font-medium">
-                  {planData?.contracts?.[currentSubscription]
-                    ? planData?.contracts?.[currentSubscription]
-                    : currentSubscription === "Enterprise"
+                  {planData?.contracts?.[selectedSubscription]
+                    ? planData?.contracts?.[selectedSubscription]
+                    : selectedSubscription === "Enterprise"
                     ? "Unlimited"
                     : ""}
                 </p>
@@ -129,9 +132,9 @@ const Subscription = () => {
                   {planData?.members?.text}
                 </p>
                 <p className="text-black font-medium">
-                  {planData?.members?.[currentSubscription]
-                    ? planData?.members?.[currentSubscription]
-                    : currentSubscription === "Enterprise"
+                  {planData?.members?.[selectedSubscription]
+                    ? planData?.members?.[selectedSubscription]
+                    : selectedSubscription === "Enterprise"
                     ? "Unlimited"
                     : ""}
                 </p>
@@ -141,9 +144,9 @@ const Subscription = () => {
                   {planData?.manualReminder?.text}
                 </p>
                 <p className="text-black font-medium">
-                  {planData?.manualReminder?.[currentSubscription]
-                    ? planData?.manualReminder?.[currentSubscription]
-                    : currentSubscription === "Enterprise"
+                  {planData?.manualReminder?.[selectedSubscription]
+                    ? planData?.manualReminder?.[selectedSubscription]
+                    : selectedSubscription === "Enterprise"
                     ? "Unlimited"
                     : ""}
                 </p>
@@ -153,9 +156,9 @@ const Subscription = () => {
                   {planData?.paymentReminders?.text}
                 </p>
                 <p className="text-black font-medium">
-                  {planData?.paymentReminders?.[currentSubscription]
-                    ? planData?.paymentReminders?.[currentSubscription]
-                    : currentSubscription === "Enterprise"
+                  {planData?.paymentReminders?.[selectedSubscription]
+                    ? planData?.paymentReminders?.[selectedSubscription]
+                    : selectedSubscription === "Enterprise"
                     ? "Unlimited"
                     : ""}
                 </p>
@@ -165,20 +168,22 @@ const Subscription = () => {
                   {planData?.customPaymentChannels?.text}
                 </p>
                 <p className="text-black font-medium">
-                  {planData?.customPaymentChannels?.[currentSubscription]
-                    ? planData?.customPaymentChannels?.[currentSubscription]
-                    : currentSubscription === "Enterprise"
+                  {planData?.customPaymentChannels?.[selectedSubscription]
+                    ? planData?.customPaymentChannels?.[selectedSubscription]
+                    : selectedSubscription === "Enterprise"
                     ? "Unlimited"
                     : ""}
                 </p>
               </div>
             </div>
-            <button
-              onClick={upgradePlan}
-              className="hover:bg-opacity-90 bg-primary text-center w-full rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
-            >
-              {loading ? <Spin className="light-spin" /> : "Upgrade"}
-            </button>
+            {currentSubscription !== selectedSubscription ? (
+              <button
+                onClick={upgradePlan}
+                className="hover:bg-opacity-90 bg-primary text-center w-full rounded-[50px] flex items-center justify-center h-[49px] text-white font-medium text-base mt-10"
+              >
+                {loading ? <Spin className="light-spin" /> : "Upgrade"}
+              </button>
+            ) : null}
           </>
         ) : (
           <div className="flex items-center justify-center">
