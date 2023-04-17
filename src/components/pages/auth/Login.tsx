@@ -74,7 +74,7 @@ const Login = () => {
     <div className="bg-[#EFEFEF] bg-opacity-[0.85] min-h-screen">
       <HeaderNavigationBar />
       <div className="container flex items-center justify-center 2xl:min-h-[90.5vh] min-h-[87vh]">
-        <form className="login-form w-[640px] max-w-full 2xl:px-12 md:px-6 p-5 2xl:py-[54px]">
+        <form className="login-form 2xl:w-[640px] w-[500px] max-w-full 2xl:px-12 md:px-6 p-5 2xl:py-[54px]">
           <h4 className="font-bold text-2xl text-black">Welcome!</h4>
           <h2 className="text-[38px] font-bold text-back mb-5">
             Login to payy

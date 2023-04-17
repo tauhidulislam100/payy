@@ -25,7 +25,7 @@ const Subscription = () => {
 
   const upgradePlan = async () => {
     const subscriptionId =
-      planData?.productIds[currentSubscription]?.web?.[planMode]?.["stripe"];
+      planData?.productIds[selectedSubscription]?.web?.[planMode]?.["stripe"];
     if (!subscriptionId) {
       return notification.warning({
         message: "subscription plan does not exist",
@@ -88,7 +88,9 @@ const Subscription = () => {
                 selectedSubscription === k
                   ? "bg-primary text-white"
                   : "hover:bg-primary hover:text-white"
-              } border-2 border-[#F1F1F2] rounded-md text-center relative  text-black  p-5 cursor-pointer group`}
+              } border-2 border-[#F1F1F2] rounded-md text-center relative  text-black  p-5 cursor-pointer group ${
+                currentSubscription === k ? "active-subscription" : ""
+              }`}
             >
               <h2 className="text-2xl font-semibold">{k}</h2>
               <p
@@ -104,11 +106,6 @@ const Subscription = () => {
                 {user?.currency?.symbol ?? "$"}
                 {planData?.cost?.[k]?.[planMode]}
               </h2>
-              {currentSubscription === k ? (
-                <span className="absolute left-2 bottom-3 text-white text-xl w-4 h-4 box-content">
-                  <AiFillCheckSquare />
-                </span>
-              ) : null}
             </div>
           ))}
         </div>
