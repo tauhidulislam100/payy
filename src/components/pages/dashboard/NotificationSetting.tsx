@@ -7,9 +7,9 @@ const NotificationSetting = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    email: false,
-    sms: false,
-    push: false,
+    email: true,
+    sms: true,
+    push: true,
     ...user?.notifications,
   });
 
