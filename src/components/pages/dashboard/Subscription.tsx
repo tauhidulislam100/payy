@@ -118,7 +118,9 @@ const Subscription = () => {
                 </p>
                 <p className="text-black font-medium">
                   {planData?.contracts?.[selectedSubscription]
-                    ? planData?.contracts?.[selectedSubscription]
+                    ? planData?.contracts?.[selectedSubscription] > 1000000
+                      ? "Unlimited"
+                      : planData?.contracts?.[selectedSubscription]
                     : selectedSubscription === "Enterprise"
                     ? "Unlimited"
                     : ""}
@@ -130,7 +132,9 @@ const Subscription = () => {
                 </p>
                 <p className="text-black font-medium">
                   {planData?.members?.[selectedSubscription]
-                    ? planData?.members?.[selectedSubscription]
+                    ? planData?.members?.[selectedSubscription] > 1000000
+                      ? "Unlimited"
+                      : planData?.members?.[selectedSubscription]
                     : selectedSubscription === "Enterprise"
                     ? "Unlimited"
                     : ""}
@@ -154,7 +158,10 @@ const Subscription = () => {
                 </p>
                 <p className="text-black font-medium">
                   {planData?.paymentReminders?.[selectedSubscription]
-                    ? planData?.paymentReminders?.[selectedSubscription]
+                    ? planData?.paymentReminders?.[selectedSubscription] >
+                      1000000
+                      ? "Unlimited"
+                      : planData?.paymentReminders?.[selectedSubscription]
                     : selectedSubscription === "Enterprise"
                     ? "Unlimited"
                     : ""}
@@ -166,7 +173,10 @@ const Subscription = () => {
                 </p>
                 <p className="text-black font-medium">
                   {planData?.customPaymentChannels?.[selectedSubscription]
-                    ? planData?.customPaymentChannels?.[selectedSubscription]
+                    ? planData?.customPaymentChannels?.[selectedSubscription] >
+                      1000000
+                      ? "Unlimited"
+                      : planData?.customPaymentChannels?.[selectedSubscription]
                     : selectedSubscription === "Enterprise"
                     ? "Unlimited"
                     : ""}
