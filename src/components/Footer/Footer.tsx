@@ -155,9 +155,9 @@ const Footer = () => {
           <p data-animate className="text-base font-medium text-white">
             © {new Date().getFullYear()}{" "}
             <a href="#" className="text-black mr-1">
-              Payy
+              Payy Money Tracker
             </a>
-            Design by BmAshik
+         
           </p>
           <div data-animate className="text-base font-medium">
             <a href="https://payy.tawk.help/article/terms-of-service">
