@@ -1,0 +1,10 @@
+{
+  "applinks": {
+      "details": [
+      {
+        "appID": "7K8DDF3NYZ.com.fero.payy.app",
+        "paths": ["*"]
+      }
+    ]
+  }
+}

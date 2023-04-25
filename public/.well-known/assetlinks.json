@@ -1,0 +1,10 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.fero.payy.app",
+      "sha256_cert_fingerprints":
+      ["65:C4:2B:34:EA:09:DD:48:2C:E5:2A:E7:0F:3F:17:B2:55:E5:EC:3A:B8:9C:D7:57:FE:A0:C1:AA:DC:50:3F:08"]
+    }
+  }]
+  

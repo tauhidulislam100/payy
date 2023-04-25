@@ -13,6 +13,10 @@ export default defineConfig({
           new URL("./src/components", import.meta.url)
         ),
       },
+      {
+        find: "@src",
+        replacement: fileURLToPath(new URL("./src", import.meta.url)),
+      },
     ],
   },
 });
