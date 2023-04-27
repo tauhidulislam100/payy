@@ -66,7 +66,7 @@ function HeaderNavigationBar() {
             <Link href="#download">Download</Link>
             {/* <Link href="/pricing">Pricing</Link> */}
             <Link href="#discover">Product</Link>
-            <Link>Resources</Link>
+            <Link href="https://payy.tawk.help">Resources</Link>
           </div>
           <div>
             {user ? (
