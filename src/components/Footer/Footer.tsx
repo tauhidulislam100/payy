@@ -32,12 +32,12 @@ const Footer = () => {
                   <Facebook />
                 </span>
               </a> */}
-              <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-black hover:text-white  inline-grid place-items-center bg-white text-secondary">
+              {/* <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-black hover:text-white  inline-grid place-items-center bg-white text-secondary">
                 <span>
                   <Twitter />
                 </span>
-              </a>
-              <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-black hover:text-white  inline-grid place-items-center bg-white text-secondary">
+              </a> */}
+              <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-black hover:text-white  inline-grid place-items-center bg-white text-secondary" href="https://www.instagram.com/payy_money/" target="_blank">
                 <span>
                   <Instagram />
                 </span>
