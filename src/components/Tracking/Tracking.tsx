@@ -19,7 +19,7 @@ const Tracking = () => {
               data-animate
               className="xl:text-4xl md:text-3xl text-[25px] font-bold my-4 max-w-[646px]"
             >
-              Payment Tracking in a Simple{" "}
+              Debt Tracking in a Simple{" "}
               <span className="font-medium">& Efficient Way</span>
             </h2>
             <p data-animate className="text-secondary font-normal">
