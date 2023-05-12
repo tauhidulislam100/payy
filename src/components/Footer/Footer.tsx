@@ -32,12 +32,12 @@ const Footer = () => {
                   <Facebook />
                 </span>
               </a> */}
-              <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-black hover:text-white  inline-grid place-items-center bg-white text-secondary">
+              {/* <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-black hover:text-white  inline-grid place-items-center bg-white text-secondary">
                 <span>
                   <Twitter />
                 </span>
-              </a>
-              <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-black hover:text-white  inline-grid place-items-center bg-white text-secondary">
+              </a> */}
+              <a className="cursor-pointer h-[36px] w-[36px] rounded-full hover:bg-black hover:text-white  inline-grid place-items-center bg-white text-secondary" href="https://www.instagram.com/payy_money/" target="_blank">
                 <span>
                   <Instagram />
                 </span>
@@ -64,7 +64,7 @@ const Footer = () => {
               </li> */}
               <li data-animate>
                 <a
-                  href="#"
+                  href="https://play.google.com/store/apps/details?id=com.fero.payy.app" target="_blank"
                   className={`inline-flex items-center text-base py-2 text-white font-medium hover:text-black group`}
                 >
                   Android download
@@ -72,7 +72,7 @@ const Footer = () => {
               </li>
               <li data-animate>
                 <a
-                  href="#"
+                  href="https://apps.apple.com/us/app/payy-money-tracker/id1672186907" target="_blank"
                   className={`inline-flex items-center text-base py-2 text-white font-medium hover:text-black group`}
                 >
                   iOS download
@@ -120,7 +120,7 @@ const Footer = () => {
               </li>
             </ul>
           </div> */}
-          <div className="xl:pl-20">
+          {/* <div className="xl:pl-20">
             <h3
               data-animate
               className="font-bold text-2xl mb-10 mdMax:text-center"
@@ -148,7 +148,7 @@ const Footer = () => {
                 Subscribe
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="w-full h-[1px] bg-white bg-opacity-20 my-10" />
         <div className="flex justify-between mdMax:flex-col mdMax:items-center">
