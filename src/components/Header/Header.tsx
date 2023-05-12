@@ -20,7 +20,7 @@ const Header = () => {
               </h2>
               
               <div className="mt-10">
-               <strong style={{color: 'green'}}>Get $5.00 for every debt payment requested and 3 months free on our premium subscription</strong>
+               <strong style={{color: 'green'}}>Get $5.00 for every debt payment requested and 3 months free on our premium plan</strong>
               <br/> Use promo code MOTHERSDAY <sup>Offer ends May 20th, 2023</sup>
               </div>
               <div className="mt-10">
