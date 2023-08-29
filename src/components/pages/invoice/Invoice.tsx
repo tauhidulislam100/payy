@@ -81,8 +81,8 @@ const Invoice = () => {
             <img src={logo} className="object-cover h-[26px]"/>
            </div>
             <div className="max-w-[401px] mt-5 lg:text-right text-center">
-              <h1 className="text-[40px] mb-10">Fero Technologies, LLC</h1>
-              <address className="italic text-2xl font-medium">
+              <h1 className="text-3xl mb-4">Fero Technologies, LLC</h1>
+              <address className="italic text-base font-medium">
                 348 Junior Road, Atlanta GA, 30033 United States
               </address>
               <div className="italic text-2xl font-medium">
@@ -103,7 +103,7 @@ const Invoice = () => {
             </div>
           </div>
           <div className="overflow-x-auto">
-            <div className="min-w-[1100px]">
+            <div className="lg:min-w-full min-w-[1024px]">
                 <table className="table-fixed w-full border border-primary">
                     <thead className="bg-primary bg-opacity-30">
                     <tr className="">
@@ -157,14 +157,14 @@ const Invoice = () => {
             </div>
           </div>
           <div className="overflow-x-auto w-full">
-            <div className="min-w-[1440px]">
+            <div className="lg:min-w-full min-w-[1400px]">
           <table className="table-fixed w-full border border-primary">
             <thead className="bg-primary bg-opacity-30">
               <tr className="">
                 <td className="td">Label</td>
                 <td className="td">Amount</td>
                 <td className="td">Due Date</td>
-                <td className="td" colSpan={2}>
+                <td className="td w-[600px]">
                   Download
                 </td>
               </tr>
@@ -174,7 +174,7 @@ const Invoice = () => {
                 <td className="td">Deposit</td>
                 <td className="td">$5,000</td>
                 <td className="td">July, 3rd 2023</td>
-                <td className="td" colSpan={2}>
+                <td className="td w-[600px]">
                   <div className="flex gap-4 w-full justify-between">
                     <ActionLink icon={<AngleDown/>} text="Make Payment" href="/auth/signin" />
                     <ActionLink  text="Mark as Paid" href="/auth/signin" />
@@ -186,7 +186,7 @@ const Invoice = () => {
                 <td className="td">Final Payment</td>
                 <td className="td">$7,000</td>
                 <td className="td">July, 5rd 2023</td>
-                <td className="td" colSpan={2}>
+                <td className="td w-[600px]">
                   <div className="flex gap-4 w-full justify-between">
                     <ActionLink icon={<AngleDown/>} text="Make Payment" href="/auth/signin" />
                     <ActionLink  text="Mark as Paid" href="/auth/signin" />
@@ -198,7 +198,7 @@ const Invoice = () => {
             <tfoot className="bg-[#FCFCFC]">
               <tr className="">
                 <td className="td font-bold !text-left">total</td>
-                <td className="td font-bold !text-left !pl-28" colSpan={4}>
+                <td className="td font-bold !text-left lg:!pl-8 xl:!pl-16 2xl:!pl-28 !pl-[6rem]" colSpan={3}>
                   88000
                 </td>
               </tr>
