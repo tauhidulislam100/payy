@@ -11,6 +11,7 @@ import UnProtectedRoute from "./components/common/UnProtectedRoute";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./index.css";
+import Invoice from "./components/pages/invoice/Invoice";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
       <ProtectedRoute>
         <Dashboard />
       </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/invoice",
+    element: (
+      <UnProtectedRoute>
+        <Invoice />
+      </UnProtectedRoute>
     ),
   },
 ]);

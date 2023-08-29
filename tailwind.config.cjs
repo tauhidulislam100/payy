@@ -11,6 +11,7 @@ module.exports = {
         primary: "#7C3AED",
         black: "#13121F",
         secondary: "#54565B",
+        "primary-100": "#CBB1F8",
       },
       container: {
         center: true,

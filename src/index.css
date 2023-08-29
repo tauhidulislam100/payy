@@ -451,3 +451,28 @@ html {
     /* padding: 0 15px; */
     border-radius: -1px;
 }
+
+.td {
+    border-right: 1px solid #7546F6;
+    border-bottom: 1px solid #7546F6;
+    padding: 16px 10px;
+    font-size: 24px;
+    font-family: var(--jost);
+    text-align: center;
+}
+
+.payment-info-row .td:nth-child(2) {
+    text-align: left;
+}
+.payment-info-row.payment-plan .td:nth-child(2)  {
+    text-align: center;
+}
+.payment-info-row.payment-plan .td:nth-child(1) {
+    text-align: left;
+}
+.payment-info-row:nth-child(odd) .td {
+    background-color: rgba(124, 58, 237, 0.10);
+}
+.payment-info-row:nth-child(even) .td {
+    background-color: #FCFCFC;
+}
