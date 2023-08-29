@@ -12,29 +12,33 @@ const Header = () => {
             <div>
               <h2
                 data-animate
-                className="2xl:text-8xl xl:text-7xl 2xl:leading-[116%] xl:leading-[130%] md:text-5xl text-5xl leading-[123%] font-medium md:leading-[130%]"
+                className="2xl:text-7xl xl:text-6xl 2xl:leading-[116%] xl:leading-[130%] md:text-5xl text-4xl leading-[123%] font-medium md:leading-[120%]"
               >
-                <strong className="font-bold">Simple</strong> payment <br />{" "}
-                tracking <strong className="font-bold">for</strong> <br />{" "}
-                everyone
+                Easiest way to track<br/><strong className="font-bold">debts</strong> and payments
+                {/* <strong className="font-bold">for</strong> <br />{" "}
+                everyone */}
               </h2>
+              
+              <div className="mt-10">
+               <strong style={{color: 'green'}}>Get $5.00 for every debt payment requested and 3 months free on our premium plan</strong>
+              <br/> Use promo code MOTHERSDAY <sup>Offer ends May 20th, 2023</sup>
+              </div>
+              <div className="mt-10">
+              
+                <StoreLink />
+              </div>
               <p
                 data-animate
                 className="text-lg leading-7 text-black font-normal max-w-[430px] my-6"
               >
-                Payy simplifies how individuals, freelancers and small
-                businesses keep track of cashflow and debts so that
-                they never miss another payment.
+                Do people owe you money? Payy simplifies how individuals, freelancers and small
+                businesses keep track of people and customers that owe them in a smart collaborative way.
               </p>
-
-              <div className="mt-10">
-                <StoreLink />
-              </div>
             </div>
           </div>
           <div
             data-animate
-            className="mdMax:order-1 mdMax:flex items-center ml-auto"
+            className="mdMax:order-2 mdMax:flex items-center ml-auto"
           >
             <img
               src={appUi}
