@@ -27,10 +27,9 @@ export function formatDate(dateString?: string): string {
 }
 
 
-export function useContractDetail() {
+export function useContractDetail(code?: string) {
     const [contractData, setContractData] = useState<Record<string, any>|undefined>();
     const [error, setError] = useState('');
-    const [contractId, setContractId] = useState('');
     const [contractItems, setContractItems] = useState<Record<string, any>>();
     const base_url = import.meta.env.VITE_API_CONTACT_DETAIL_ENDPOINT ?? 'https://payy-test.herokuapp.com/v1/contract';
     const [isLoading, setisLoading] = useState(false);
@@ -43,8 +42,8 @@ export function useContractDetail() {
         try {
             setisLoading(true);
             const query = new URLSearchParams(window.location.search)
-            setContractId(query.get("contract_id") as string);
-            const { data } = await axios.get(`${base_url}/details/${query.get("contract_id")}`);
+            console.log(query);
+            const { data } = await axios.get(`${base_url}/details/${code}`);
             const respData = data.data;
             setContractData(respData);
             setError('');
@@ -68,7 +67,7 @@ export function useContractDetail() {
 
     async function acceptOrDecline(accept=false) {
         try {
-            await axios.put(`${base_url}/${contractId}/accept-contract?authToken=${contractData?.token}`, {accept}, {
+            await axios.put(`${base_url}/${contractData?.contract.id}/accept-contract`, {accept}, {
                 headers: {
                     'Authorization': `Bearer ${contractData?.token}`
                 }
@@ -83,7 +82,7 @@ export function useContractDetail() {
 
     async function markAsPaid(memo='', amount=0, installment='') {
         try {
-            await axios.put(`${base_url}/${contractData?.contract.id}/add-payment?authToken=${contractData?.token}`, {
+            await axios.put(`${base_url}/${contractData?.contract.id}/add-payment`, {
                 description: memo,
                 amount, installment,
                 payer: contractData?.payer?.id
@@ -100,5 +99,5 @@ export function useContractDetail() {
         }
     }
 
-    return {contractData, contractId, contractItems, error, base_url, acceptOrDecline, markAsPaid, isLoading};
+    return {contractData, contractItems, error, base_url, acceptOrDecline, markAsPaid, isLoading};
 }

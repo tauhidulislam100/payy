@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/invoice",
+    path: "/c/:code",
     element: (
       <UnProtectedRoute>
         <Invoice />

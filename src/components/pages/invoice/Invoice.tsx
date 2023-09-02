@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { Avatar, Dropdown, Modal, Spin } from "antd";
 import StoreLink from "@src/components/StoreLink/StoreLink";
 import logo from "/src/assets/logo.png";
@@ -7,12 +7,12 @@ import secure from "/src/assets/secure.png";
 import AngleDown from "@src/components/Icons/AngleDown";
 import { formatDate, useContractDetail } from "@src/hooks/useContractDetail";
 
-const ActionLink = ({ text = "", href = "", className = "", icon, download=false, }:{text?:string, href?:string,className?:string,icon?:any, download?:boolean,}) => {
+const ActionLink = ({ text = "", href = "", className = "", icon, download=false, disabled=false, }:{text?:string, href?:string,className?:string,icon?:any, download?:boolean, disabled?: boolean;}) => {
   return (
     <NavLink
       download={download}
-      to={href}
-      className={`inline-flex gap-x-2 items-center text-base px-6 leading-none rounded-[20px] font-medium text-white bg-primary  h-[38px]  ${className}`}
+      to={disabled ? '' : href}
+      className={`inline-flex gap-x-2 items-center text-base px-6 leading-none rounded-[20px] font-medium text-white bg-primary  h-[38px]  ${className} ${disabled ? 'bg-opacity-70' :""}`}
     >
       {text} {icon ? <span className="text-sm"><AngleDown/> </span> : null} 
     </NavLink>
@@ -28,10 +28,11 @@ const ActionButton = ({className='', text='', onClick, ...rest}: {onClick?: ()=>
 }
 
 const Invoice = () => {
+  let { code } = useParams();
   const [openMarkModal, setOpenMarkModal] = useState(false);
   const [memo, setMemo] = useState('');
   const [paymentPlan, setPaymentPlan] = useState<Record<string, any>|undefined>();
-  const { contractData, contractId, contractItems, acceptOrDecline, markAsPaid, base_url, isLoading } = useContractDetail();
+  const { contractData, contractItems, acceptOrDecline, markAsPaid, base_url, isLoading } = useContractDetail(code);
 
   return (
     <>
@@ -114,7 +115,7 @@ const Invoice = () => {
                 {contractData?.payee?.address}
               </address>
               <div className="italic text-2xl font-medium">
-                <strong className="font-bold">Code:</strong> {contractId}
+                <strong className="font-bold">Code:</strong> {code}
               </div>
               <div className="text-2xl italic font-medium">
                 <strong className="font-bold">Date:</strong> {formatDate(contractData?.contract?.createdAt)}
@@ -200,17 +201,17 @@ const Invoice = () => {
                     <div className="flex gap-4 w-full justify-between">
                        <div>
                        <Dropdown  trigger={['click']}  menu={{items: contractData.contract.paymentChannels.map((item: any) => ({label: item.paymentChannel.name, key: item.paymentChannel.id})) as any}}>
-                        <button className="inline-flex gap-x-2 items-center text-base leading-none px-6 rounded-[20px] font-medium text-white bg-primary  h-[38px]">
+                        <button disabled={contractData?.payer?.status != 'Accepted'} className="disabled:bg-opacity-70 inline-flex gap-x-2 items-center text-base leading-none px-6 rounded-[20px] font-medium text-white bg-primary  h-[38px]">
                           Make Payment <span className="text-sm"><AngleDown/> </span>
                         </button>
                        </Dropdown>
 
                        </div>
-                      <ActionButton  text="Mark as Paid" onClick={() => {
+                      <ActionButton disabled={contractData?.payer?.status != 'Accepted'}  text="Mark as Paid" onClick={() => {
                         setPaymentPlan(plan);
                         setOpenMarkModal(true);
                       }}/>
-                      <ActionLink  text="Download Invoice" href={`${base_url}/invoice/${contractData?.payer?.id}/${plan.id}?authToken=${contractData?.token}`} download={true}/>
+                      <ActionLink disabled={contractData?.payer?.status != 'Accepted'} text="Download Invoice" href={`${base_url}/invoice/${contractData?.payer?.id}/${plan.id}?authToken=${contractData?.token}`} download={true}/>
                     </div>
                   </td>
                 </tr>
